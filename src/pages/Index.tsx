@@ -1,13 +1,18 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroBanner from '@/components/home/HeroBanner';
+import FeaturedProducts from '@/components/home/FeaturedProducts';
+import DiwaliCollection from '@/components/home/DiwaliCollection';
+import BestSellers from '@/components/home/BestSellers';
+import VideoSection from '@/components/home/VideoSection';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <HeroBanner />
+      <FeaturedProducts />
+      <DiwaliCollection />
+      <BestSellers />
+      <VideoSection />
+    </>
   );
 };
 

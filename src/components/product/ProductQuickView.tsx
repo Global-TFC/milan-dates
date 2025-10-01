@@ -1,0 +1,162 @@
+import { useState } from 'react';
+import { Product } from '@/types/product';
+import { useCart } from '@/contexts/CartContext';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { ShoppingBag, Heart, Share2, Plus, Minus } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+interface ProductQuickViewProps {
+  product: Product;
+  open: boolean;
+  onClose: () => void;
+}
+
+const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onClose }) => {
+  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]?.label || '');
+  
+  const selectedPrice = product.sizes?.find(s => s.label === selectedSize)?.price || product.price;
+
+  const handleAddToCart = () => {
+    addToCart(
+      { ...product, price: selectedPrice }, 
+      quantity, 
+      selectedSize
+    );
+    onClose();
+    setQuantity(1);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-4xl">
+        <DialogHeader>
+          <DialogTitle className="sr-only">{product.name}</DialogTitle>
+        </DialogHeader>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Product Image */}
+          <div className="relative aspect-square overflow-hidden rounded-lg">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+            {product.badge && (
+              <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground">
+                {product.badge}
+              </Badge>
+            )}
+          </div>
+
+          {/* Product Details */}
+          <div className="flex flex-col">
+            <div className="flex-1">
+              <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
+              <h2 className="text-2xl font-playfair font-bold mb-3">{product.name}</h2>
+              
+              <div className="flex items-baseline space-x-3 mb-4">
+                <span className="text-2xl font-bold text-accent">
+                  ₹{selectedPrice.toLocaleString('en-IN')}
+                </span>
+                {product.originalPrice && (
+                  <span className="text-lg text-muted-foreground line-through">
+                    ₹{product.originalPrice.toLocaleString('en-IN')}
+                  </span>
+                )}
+                {product.weight && (
+                  <span className="text-sm text-muted-foreground">({product.weight})</span>
+                )}
+              </div>
+
+              <p className="text-muted-foreground mb-6">{product.description}</p>
+
+              {/* Size Selection */}
+              {product.sizes && product.sizes.length > 0 && (
+                <div className="mb-6">
+                  <label className="text-sm font-medium mb-2 block">Size</label>
+                  <Select value={selectedSize} onValueChange={setSelectedSize}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {product.sizes.map((size) => (
+                        <SelectItem key={size.label} value={size.label}>
+                          {size.label} - ₹{size.price.toLocaleString('en-IN')}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
+
+              {/* Quantity Selector */}
+              <div className="mb-6">
+                <label className="text-sm font-medium mb-2 block">Quantity</label>
+                <div className="flex items-center space-x-3">
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <span className="w-12 text-center font-medium">{quantity}</span>
+                  <Button
+                    size="icon"
+                    variant="outline"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <Separator className="my-4" />
+
+            {/* Action Buttons */}
+            <div className="space-y-3">
+              <Button 
+                className="w-full bg-gradient-luxury text-primary-foreground" 
+                size="lg"
+                onClick={handleAddToCart}
+              >
+                <ShoppingBag className="h-5 w-5 mr-2" />
+                Add to Cart
+              </Button>
+              
+              <div className="flex space-x-3">
+                <Button variant="outline" className="flex-1">
+                  <Heart className="h-4 w-4 mr-2" />
+                  Wishlist
+                </Button>
+                <Button variant="outline" className="flex-1">
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default ProductQuickView;
