@@ -30,26 +30,28 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 {product.badge}
               </Badge>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 md:transition-opacity duration-300" />
             
-            {/* Quick Actions */}
-            <div className="absolute bottom-3 left-3 right-3 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            {/* Quick Actions - Always visible on mobile, hover on desktop */}
+            <div className="absolute bottom-3 left-3 right-3 flex space-x-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300 md:transform md:translate-y-2 md:group-hover:translate-y-0">
               <Button
                 size="sm"
-                className="flex-1 bg-background/90 backdrop-blur text-foreground hover:bg-background"
+                className="flex-1 bg-background/90 backdrop-blur text-foreground hover:bg-background text-xs sm:text-sm"
                 onClick={() => setQuickViewOpen(true)}
               >
-                <Eye className="h-4 w-4 mr-1" />
-                Quick View
+                <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                <span className="hidden sm:inline">Quick View</span>
+                <span className="sm:hidden">View</span>
               </Button>
               <Button
                 size="sm"
                 variant="default"
-                className="flex-1 bg-accent hover:bg-accent-gold text-accent-foreground"
+                className="flex-1 bg-accent hover:bg-accent-gold text-accent-foreground text-xs sm:text-sm"
                 onClick={() => addToCart(product)}
               >
-                <ShoppingBag className="h-4 w-4 mr-1" />
-                Add to Cart
+                <ShoppingBag className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
+                <span className="hidden sm:inline">Add to Cart</span>
+                <span className="sm:hidden">Add</span>
               </Button>
             </div>
           </div>
