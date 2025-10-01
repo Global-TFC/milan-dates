@@ -43,8 +43,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/collections/diwali" className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all">
-                  Diwali Collection
+                <Link to="/collections/ramadan" className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all">
+                  Ramadan Collection
                 </Link>
               </li>
               <li>

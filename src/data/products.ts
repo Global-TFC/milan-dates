@@ -1,7 +1,7 @@
 import { Product } from '@/types/product';
 import chocolateDates from '@/assets/chocolate-dates.jpg';
 import honeyJar from '@/assets/honey-jar.jpg';
-import diwaliHamper from '@/assets/diwali-hamper.jpg';
+import ramadanHamper from '@/assets/ramadan-hamper.jpg';
 import stuffedDates from '@/assets/stuffed-dates.jpg';
 
 export const products: Product[] = [
@@ -34,11 +34,11 @@ export const products: Product[] = [
   },
   {
     id: '3',
-    name: 'Diwali Celebration Hamper',
+    name: 'Ramadan Celebration Hamper',
     category: 'Gift Hampers',
     price: 7999,
     originalPrice: 9999,
-    image: diwaliHamper,
+    image: ramadanHamper,
     description: 'Luxurious festive hamper containing premium dates, chocolates, dry fruits, and traditional sweets.',
     inStock: true,
     badge: 'Limited Edition',
@@ -75,7 +75,7 @@ export const products: Product[] = [
     name: 'Corporate Gift Set',
     category: 'Gift Hampers',
     price: 15999,
-    image: diwaliHamper,
+    image: ramadanHamper,
     description: 'Premium corporate gifting solution with customizable packaging and personalized messages.',
     inStock: true,
     badge: 'Corporate',
@@ -109,4 +109,4 @@ export const products: Product[] = [
 
 export const featuredProducts = products.filter(p => ['1', '3', '4'].includes(p.id));
 export const bestSellers = products.filter(p => p.badge === 'Bestseller' || ['1', '3', '5'].includes(p.id));
-export const diwaliCollection = products.filter(p => p.category === 'Gift Hampers' || p.badge === 'Limited Edition');
+export const ramadanCollection = products.filter(p => p.category === 'Gift Hampers' || p.badge === 'Limited Edition');

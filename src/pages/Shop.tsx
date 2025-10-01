@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { products, diwaliCollection } from '@/data/products';
+import { products, ramadanCollection } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
 import { Button } from '@/components/ui/button';
 import {
@@ -33,8 +33,8 @@ const Shop = () => {
     let filtered = products;
 
     // Route-based filtering
-    if (collection === 'diwali') {
-      filtered = diwaliCollection;
+    if (collection === 'ramadan') {
+      filtered = ramadanCollection;
     } else if (category) {
       const categoryMap: Record<string, string> = {
         'dates': 'Dates',
@@ -69,8 +69,8 @@ const Shop = () => {
     return filtered;
   }, [category, collection, selectedCategories, priceRange, sortBy]);
 
-  const pageTitle = collection === 'diwali' 
-    ? 'Diwali Collection' 
+  const pageTitle = collection === 'ramadan' 
+    ? 'Ramadan Collection'
     : category 
     ? category.charAt(0).toUpperCase() + category.slice(1)
     : 'All Products';

@@ -31,7 +31,7 @@ const Header = () => {
     {
       title: 'Festive Collections',
       items: [
-        { name: 'Diwali Special', href: '/collections/diwali' },
+        { name: 'Ramadan Special', href: '/collections/ramadan' },
         { name: 'Wedding Gifts', href: '/collections/wedding' },
         { name: 'Corporate Gifts', href: '/collections/corporate' },
       ]
@@ -51,7 +51,7 @@ const Header = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 border-b border-border">
         {/* Top Bar */}
         <div className="bg-primary text-primary-foreground py-2 text-center text-sm">
-          <p>✨ Diwali Special: Get 20% off on all gift hampers | Free shipping above ₹2,999</p>
+          <p>✨ Ramadan Special: Get 20% off on all gift hampers | Free shipping above ₹2,999</p>
         </div>
 
         {/* Main Header */}

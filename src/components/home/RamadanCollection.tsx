@@ -1,10 +1,10 @@
-import { diwaliCollection } from '@/data/products';
+import { ramadanCollection } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Gift } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const DiwaliCollection = () => {
+const RamadanCollection = () => {
   return (
     <section className="py-16 bg-gradient-festive text-white relative overflow-hidden">
       {/* Decorative Elements */}
@@ -21,11 +21,11 @@ const DiwaliCollection = () => {
           </div>
           
           <h2 className="text-3xl lg:text-4xl font-playfair font-bold mb-4">
-            Diwali Celebration Collection
+            Ramadan Celebration Collection
           </h2>
           
           <p className="max-w-2xl mx-auto text-white/90">
-            Make this Diwali extra special with our exclusive festive hampers. 
+            Make this Ramadan extra special with our exclusive festive hampers. 
             Each gift is thoughtfully curated with premium ingredients and presented in elegant packaging.
           </p>
         </div>
@@ -40,7 +40,7 @@ const DiwaliCollection = () => {
               </div>
               
               <h3 className="text-2xl lg:text-3xl font-playfair font-bold mb-4">
-                Royal Diwali Gift Box
+                Royal Ramadan Gift Box
               </h3>
               
               <ul className="space-y-2 mb-6">
@@ -62,7 +62,7 @@ const DiwaliCollection = () => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="text-accent-gold">✓</span>
-                  <span>Decorative Diya Set</span>
+                  <span>Traditional Date Selection</span>
                 </li>
               </ul>
 
@@ -77,7 +77,7 @@ const DiwaliCollection = () => {
                 className="bg-white text-luxury-brown hover:bg-white/90"
                 asChild
               >
-                <Link to="/collections/diwali">
+                <Link to="/collections/ramadan">
                   Shop Now
                 </Link>
               </Button>
@@ -85,8 +85,8 @@ const DiwaliCollection = () => {
 
             <div className="relative">
               <img
-                src={diwaliCollection[0]?.image}
-                alt="Diwali Hamper"
+                src={ramadanCollection[0]?.image}
+                alt="Ramadan Hamper"
                 className="rounded-lg shadow-2xl"
               />
               <div className="absolute -top-4 -right-4 bg-accent-gold text-luxury-dark px-3 py-1 rounded-full font-semibold text-sm">
@@ -98,7 +98,7 @@ const DiwaliCollection = () => {
 
         {/* More Products */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {diwaliCollection.slice(0, 3).map((product) => (
+          {ramadanCollection.slice(0, 3).map((product) => (
             <div key={product.id} className="bg-white/10 backdrop-blur rounded-lg p-1">
               <ProductCard product={product} />
             </div>
@@ -109,4 +109,4 @@ const DiwaliCollection = () => {
   );
 };
 
-export default DiwaliCollection;
+export default RamadanCollection;

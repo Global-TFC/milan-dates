@@ -19,17 +19,17 @@ const HeroBanner = () => {
         <div className="max-w-2xl text-white">
           <div className="flex items-center space-x-2 mb-4">
             <Sparkles className="h-5 w-5 text-accent-gold" />
-            <span className="text-accent-gold font-medium">Diwali Special Collection</span>
+            <span className="text-accent-gold font-medium">Ramadan Special Collection</span>
           </div>
           
           <h1 className="text-4xl lg:text-6xl font-playfair font-bold mb-6 leading-tight">
-            Celebrate the Festival of Lights with Luxury
+            Celebrate the Holy Month with Luxury
           </h1>
           
-              <p className="text-lg lg:text-xl mb-8 opacity-95">
-                Discover our exclusive Diwali hampers featuring the world's finest gourmet dates, 
-                artisanal chocolates, and premium dry fruits. Perfect for gifting and celebrations.
-              </p>
+          <p className="text-lg lg:text-xl mb-8 opacity-95">
+            Discover our exclusive Ramadan hampers featuring the world's finest gourmet dates, 
+            artisanal chocolates, and premium dry fruits. Perfect for Iftar gatherings and Eid celebrations.
+          </p>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Button 
@@ -37,8 +37,8 @@ const HeroBanner = () => {
               className="bg-accent hover:bg-accent-gold text-accent-foreground group"
               asChild
             >
-              <Link to="/collections/diwali">
-                Shop Diwali Collection
+              <Link to="/collections/ramadan">
+                Shop Ramadan Collection
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
