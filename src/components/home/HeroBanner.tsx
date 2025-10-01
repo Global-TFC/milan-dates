@@ -26,10 +26,10 @@ const HeroBanner = () => {
             Celebrate the Festival of Lights with Luxury
           </h1>
           
-          <p className="text-lg lg:text-xl mb-8 opacity-95">
-            Discover our exclusive Diwali hampers featuring the world's finest gourmet dates, 
-            artisanal chocolates, and premium dry fruits. Perfect for gifting and celebrations.
-          </p>
+              <p className="text-lg lg:text-xl mb-8 opacity-95">
+                Discover our exclusive Diwali hampers featuring the world's finest gourmet dates, 
+                artisanal chocolates, and premium dry fruits. Perfect for gifting and celebrations.
+              </p>
 
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Button 

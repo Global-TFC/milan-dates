@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-playfair font-bold mb-4">Bateel</h3>
+            <h3 className="text-2xl font-playfair font-bold mb-4">MilanDates</h3>
             <p className="text-sm opacity-90 mb-4">
               The world's only gourmet date grower, producer and seller. Creating moments of joy through exceptional products.
             </p>
@@ -108,7 +108,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="opacity-90">info@bateel.in</span>
+                <span className="opacity-90">info@milandates.in</span>
               </li>
             </ul>
           </div>
@@ -116,7 +116,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm opacity-75">
-          <p>&copy; 2024 Bateel. All rights reserved. | Made with love in India</p>
+          <p>&copy; 2024 MilanDates. All rights reserved. | Made with love in India</p>
         </div>
       </div>
     </footer>

@@ -22,7 +22,7 @@ const VideoSection = () => {
               
               <p className="text-muted-foreground mb-6">
                 Watch our master craftsmen carefully select and arrange each premium date, 
-                chocolate, and delicacy into our signature gift boxes. Every Bateel creation 
+                chocolate, and delicacy into our signature gift boxes. Every MilanDates creation 
                 is a work of art, designed to deliver moments of pure luxury.
               </p>
 

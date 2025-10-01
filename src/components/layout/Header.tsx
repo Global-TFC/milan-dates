@@ -36,14 +36,14 @@ const Header = () => {
         { name: 'Corporate Gifts', href: '/collections/corporate' },
       ]
     },
-    {
-      title: 'World of Bateel',
-      items: [
-        { name: 'Our Story', href: '/about' },
-        { name: 'Craftsmanship', href: '/craftsmanship' },
-        { name: 'Sustainability', href: '/sustainability' },
-      ]
-    }
+      {
+        title: 'World of MilanDates',
+        items: [
+          { name: 'Our Story', href: '/about' },
+          { name: 'Craftsmanship', href: '/craftsmanship' },
+          { name: 'Sustainability', href: '/sustainability' },
+        ]
+      }
   ];
 
   return (
@@ -67,7 +67,7 @@ const Header = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <h1 className="text-2xl font-playfair font-bold text-primary">Bateel</h1>
+              <h1 className="text-2xl font-playfair font-bold text-primary">MilanDates</h1>
             </Link>
 
             {/* Desktop Navigation */}
