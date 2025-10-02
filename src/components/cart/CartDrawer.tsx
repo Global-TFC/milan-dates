@@ -1,4 +1,4 @@
-import { X, Plus, Minus, ShoppingBag } from 'lucide-react';
+import { X, Plus, Minus, ShoppingBag, MessageCircle } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import {
   Sheet,
@@ -13,6 +13,32 @@ import { Separator } from '@/components/ui/separator';
 
 const CartDrawer = () => {
   const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal } = useCart();
+
+  const handleWhatsAppCheckout = () => {
+    // Format cart items for WhatsApp message
+    let message = '🛒 *Order Request*\n\n';
+    
+    items.forEach((item, index) => {
+      message += `${index + 1}. *${item.name}*\n`;
+      if (item.selectedSize) {
+        message += `   Size: ${item.selectedSize}\n`;
+      }
+      message += `   Quantity: ${item.quantity}\n`;
+      message += `   Price: ₹${item.price.toLocaleString('en-IN')} each\n`;
+      message += `   Subtotal: ₹${(item.price * item.quantity).toLocaleString('en-IN')}\n\n`;
+    });
+    
+    message += `━━━━━━━━━━━━━━━\n`;
+    message += `*Total: ₹${cartTotal.toLocaleString('en-IN')}*\n\n`;
+    message += `Please confirm availability and delivery details.`;
+    
+    // Replace with your business WhatsApp number (without + or spaces)
+    const whatsappNumber = '919999999999'; // Example: 919999999999 for India
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -89,8 +115,13 @@ const CartDrawer = () => {
                 <span>Total</span>
                 <span>₹{cartTotal.toLocaleString('en-IN')}</span>
               </div>
-              <Button className="w-full bg-gradient-luxury text-primary-foreground" size="lg">
-                Proceed to Checkout
+              <Button 
+                className="w-full bg-gradient-luxury text-primary-foreground" 
+                size="lg"
+                onClick={handleWhatsAppCheckout}
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Order via WhatsApp
               </Button>
               <Button 
                 variant="outline" 
