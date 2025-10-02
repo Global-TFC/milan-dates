@@ -45,7 +45,7 @@ const Header = () => {
     title: 'World of MilanDates',
     items: [{
       name: 'Our Story',
-      href: '/about'
+      href: '/our-story'
     }, {
       name: 'Craftsmanship',
       href: '/craftsmanship'
