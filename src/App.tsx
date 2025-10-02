@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
@@ -32,6 +33,7 @@ const App = () => (
               </Routes>
             </main>
             <Footer />
+            <WhatsAppFloatingButton />
           </div>
         </BrowserRouter>
       </TooltipProvider>
