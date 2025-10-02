@@ -110,11 +110,12 @@ const CartDrawer = () => {
 
             <Separator />
 
-            <SheetFooter className="flex-col space-y-4 mt-4">
-              <div className="flex justify-between w-full text-lg font-semibold">
-                <span>Total</span>
-                <span>₹{cartTotal.toLocaleString('en-IN')}</span>
+            <div className="mt-4 space-y-4">
+              <div className="flex items-center justify-between w-full px-1">
+                <span className="text-lg font-semibold">Total</span>
+                <span className="text-lg font-semibold">₹{cartTotal.toLocaleString('en-IN')}</span>
               </div>
+              
               <Button 
                 className="w-full bg-gradient-luxury text-primary-foreground" 
                 size="lg"
@@ -130,7 +131,7 @@ const CartDrawer = () => {
               >
                 Continue Shopping
               </Button>
-            </SheetFooter>
+            </div>
           </>
         )}
       </SheetContent>
