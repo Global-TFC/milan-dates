@@ -10,6 +10,8 @@ const HeroBanner = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroDates})` }}
+        role="img"
+        aria-label="Premium Arabian dates arranged beautifully for Ramadan celebration"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
       </div>

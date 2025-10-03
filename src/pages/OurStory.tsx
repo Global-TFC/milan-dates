@@ -2,10 +2,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Heart, Users, Sparkles, Target } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 const OurStory = () => {
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Our Story - Heritage of Excellence"
+        description="Discover MilanDates' journey from a family tradition to becoming a trusted name in premium Arabian dates. Three generations of expertise in selecting and crafting the world's finest dates."
+        keywords="about MilanDates, date company history, Arabian dates heritage, family business, premium dates"
+      />
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div 
@@ -13,6 +19,8 @@ const OurStory = () => {
           style={{ 
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/src/assets/hero-dates.jpg')` 
           }}
+          role="img"
+          aria-label="Premium Arabian dates representing MilanDates heritage and tradition"
         />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Story</h1>

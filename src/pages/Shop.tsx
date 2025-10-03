@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { products, ramadanCollection } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -75,8 +76,19 @@ const Shop = () => {
     ? category.charAt(0).toUpperCase() + category.slice(1)
     : 'All Products';
 
+  const pageDescription = collection === 'ramadan'
+    ? 'Exclusive Ramadan collection featuring premium dates, gift hampers, and artisanal treats perfect for Iftar and Eid celebrations.'
+    : category
+    ? `Browse our selection of premium ${category}. Hand-selected luxury products for gifting and personal indulgence.`
+    : 'Shop our complete collection of luxury gourmet dates, artisanal chocolates, premium honey, and elegant gift hampers.';
+
   return (
     <div className="min-h-screen bg-background py-8">
+      <SEO 
+        title={pageTitle}
+        description={pageDescription}
+        keywords={`${pageTitle}, luxury dates, premium ${category || 'products'}, gourmet gifts`}
+      />
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="mb-8">

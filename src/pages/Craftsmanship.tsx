@@ -4,6 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ArrowRight, Package, Award, Clock, Leaf, CheckCircle, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import SEO from "@/components/SEO";
 
 const Craftsmanship = () => {
   const [videoOpen, setVideoOpen] = useState(false);
@@ -67,6 +68,12 @@ const Craftsmanship = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Our Craftsmanship - Artisan Excellence"
+        description="Experience the meticulous craftsmanship behind MilanDates. From hand-selection to artisan preparation, discover how tradition and quality create the perfect luxury date."
+        keywords="date craftsmanship, handcrafted dates, artisan dates, quality dates, traditional methods, premium date preparation"
+      />
+      
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div 
@@ -74,6 +81,8 @@ const Craftsmanship = () => {
           style={{ 
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/src/assets/ramadan-hamper.jpg')` 
           }}
+          role="img"
+          aria-label="Luxury Ramadan gift hamper showcasing premium dates and gourmet products"
         />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Craftsmanship</h1>
@@ -161,7 +170,7 @@ const Craftsmanship = () => {
             >
               <img 
                 src="/src/assets/stuffed-dates.jpg" 
-                alt="Craftsmanship process"
+                alt="Artisans preparing premium stuffed dates with nuts and chocolate"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
@@ -184,7 +193,7 @@ const Craftsmanship = () => {
                 <div className="aspect-video relative">
                   <img 
                     src={standard.image} 
-                    alt={standard.title}
+                    alt={`${standard.title} - premium date quality process`}
                     className="w-full h-full object-cover"
                   />
                 </div>
