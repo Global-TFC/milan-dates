@@ -99,7 +99,7 @@ const Footer = () => {
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span className="opacity-90">
-                  123 Luxury Avenue, Mumbai, Maharashtra 400001, India
+                  Mukkam, Kozhikode, Kerala
                 </span>
               </li>
               <li className="flex items-center space-x-2">
