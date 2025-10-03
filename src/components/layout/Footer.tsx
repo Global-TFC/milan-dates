@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail } from 'luci
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer id="footer" className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -104,7 +104,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                <span className="opacity-90">+91 98765 43210</span>
+                <a href="tel:+919876543210" className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all">
+                  +91 98765 43210
+                </a>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />

@@ -94,9 +94,9 @@ const Header = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>)}
                 <NavigationMenuItem>
-                  <Link to="/contact" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
+                  <a href="#footer" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
                     Contact Us
-                  </Link>
+                  </a>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -131,9 +131,9 @@ const Header = () => {
                       </li>)}
                   </ul>
                 </div>)}
-              <Link to="/contact" className="text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#footer" className="text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
                 Contact Us
-              </Link>
+              </a>
             </div>
           </div>}
       </header>
