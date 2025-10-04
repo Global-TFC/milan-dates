@@ -32,21 +32,14 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const existingItem = current.find(item => item.id === product.id && item.selectedSize === selectedSize);
       
       if (existingItem) {
-        toast({
-          title: "Cart Updated",
-          description: `${product.name} quantity updated`,
-        });
+        // previously showed a toast here when quantity was updated; disabled per request
         return current.map(item =>
           item.id === product.id && item.selectedSize === selectedSize
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      
-      toast({
-        title: "Added to Cart",
-        description: `${product.name} has been added to your cart`,
-      });
+      // previously showed a toast here when item was added; disabled per request
       return [...current, { ...product, quantity, selectedSize }];
     });
     setIsCartOpen(true);
