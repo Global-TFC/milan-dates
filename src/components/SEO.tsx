@@ -13,7 +13,7 @@ const SEO = ({
   title, 
   description, 
   keywords = "luxury dates, gourmet dates, Arabian dates, date gifts, Ramadan gifts, Diwali gifts, premium chocolates, corporate gifts",
-  image = "https://lovable.dev/opengraph-image-p98pqg.png",
+  image = "@/assets/sample.png",
   url = "https://milandates.com",
   type = "website"
 }: SEOProps) => {
