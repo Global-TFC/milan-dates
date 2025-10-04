@@ -104,7 +104,8 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
-                  Mukkam, Kozhikode, Kerala
+                  Rashidi station<br />
+                  G8FQ+RFC, Al Thamad 43831, Saudi Arabia
                 </a>
               </li>
               <li className="flex items-center space-x-2">
