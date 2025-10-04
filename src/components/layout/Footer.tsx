@@ -98,9 +98,14 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span className="opacity-90">
+                <a 
+                  href="https://www.google.com/maps/place/Rashidi+station/@25.5245514,39.3385124,17z/data=!4m6!3m5!1s0x15a2d596802cf4ed:0xc743f983c9c47ed7!8m2!3d25.5245716!4d39.3386289!16s%2Fg%2F11c1ph63j9?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
+                >
                   Mukkam, Kozhikode, Kerala
-                </span>
+                </a>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
