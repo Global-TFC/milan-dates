@@ -49,9 +49,6 @@ const Header = () => {
     }, {
       name: 'Craftsmanship',
       href: '/craftsmanship'
-    }, {
-      name: 'Sustainability',
-      href: '/sustainability'
     }]
   }];
   return <>

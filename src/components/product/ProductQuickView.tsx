@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ShoppingBag, Heart, Share2, Plus, Minus } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 import {
   Select,
   SelectContent,
@@ -29,6 +30,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState(product.sizes?.[0]?.label || '');
+  const { toast } = useToast();
   
   const selectedPrice = product.sizes?.find(s => s.label === selectedSize)?.price || product.price;
 
@@ -146,7 +148,48 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
                   <Heart className="h-4 w-4 mr-2" />
                   Wishlist
                 </Button>
-                <Button variant="outline" className="flex-1">
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={async () => {
+                    const shareUrl = `https://milandates.com/shop`;
+
+                    // Try native share
+                    const navShare = (navigator as unknown) as Navigator & { share?: (data: ShareData) => Promise<void> };
+                    if (navShare.share) {
+                      try {
+                        await navShare.share({
+                          title: product.name,
+                          text: product.description,
+                          url: shareUrl,
+                        });
+                        return;
+                      } catch (e) {
+                        // user cancelled or failed — fallback below
+                      }
+                    }
+
+                    // Fallback: open share options in new windows (WhatsApp, Twitter)
+                    const encoded = encodeURIComponent(`${product.name} - ${shareUrl}`);
+                    const whatsapp = `https://wa.me/?text=${encoded}`;
+                    const twitter = `https://twitter.com/intent/tweet?text=${encoded}`;
+                    const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+
+                    // Show a toast with options and copy to clipboard
+                    try {
+                      await navigator.clipboard.writeText(shareUrl);
+                      toast({ title: 'Link copied', description: 'Shop link copied to clipboard' });
+                    } catch (err) {
+                      toast({ title: 'Copy failed', description: 'Could not copy link to clipboard' });
+                    }
+
+                    // Open WhatsApp and Twitter in new tabs as quick actions
+                    window.open(whatsapp, '_blank');
+                    window.open(twitter, '_blank');
+                    // Optionally open Facebook
+                    // window.open(facebook, '_blank');
+                  }}
+                >
                   <Share2 className="h-4 w-4 mr-2" />
                   Share
                 </Button>
