@@ -1,73 +1,99 @@
-# Welcome to your Lovable project
+# Regal Gifts Boutique
 
-## Project info
+A responsive e-commerce storefront built with Vite, React, TypeScript and Tailwind CSS. This project contains a small product catalog, cart context, and a collection of UI components (shadcn-style + Radix primitives) used to build the Regal Gifts Boutique website.
 
-**URL**: https://lovable.dev/projects/a0758880-abdc-4cf3-a5c3-d033a46edd03
+Key features
+- Vite + React + TypeScript starter
+- Tailwind CSS for utility-first styling
+- Reusable component library under `src/components` (UI primitives, layout, product cards, etc.)
+- Cart state via `contexts/CartContext`
+- Client-side routing with `react-router-dom`
+- Querying with `@tanstack/react-query`
 
-## How can I edit this code?
+Tech stack
+- Vite
+- React 18
+- TypeScript
+- Tailwind CSS
+- Radix UI primitives
+- React Router
+- TanStack Query
+- Zod for validation
+- Sonner for toast notifications
 
-There are several ways of editing your application.
+Quick start
 
-**Use Lovable**
+Prerequisites
+- Node.js 18+ (or a compatible LTS)
+- npm (or pnpm/yarn if you prefer)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a0758880-abdc-4cf3-a5c3-d033a46edd03) and start prompting.
+Install
 
-Changes made via Lovable will be committed automatically to this repo.
+Open a terminal in the project root and run:
 
-**Use your preferred IDE**
+```powershell
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Run development server
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```powershell
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build for production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```powershell
+npm run build
+```
 
-**Use GitHub Codespaces**
+Preview production build locally
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```powershell
+npm run preview
+```
 
-## What technologies are used for this project?
+Lint the codebase
 
-This project is built with:
+```powershell
+npm run lint
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Scripts (from package.json)
+- `dev` - start Vite dev server
+- `build` - build for production
+- `build:dev` - build using the development mode
+- `preview` - preview the production build
+- `lint` - run ESLint across the project
 
-## How can I deploy this project?
+Project structure (important files)
+- `index.html` - Vite entry
+- `src/main.tsx` - app bootstrap
+- `src/App.tsx` - top-level app and routes
+- `src/pages/` - route pages (Index, Shop, OurStory, Craftsmanship, NotFound)
+- `src/components/` - UI components and small feature components
+	- `layout/` - `Header`, `Footer`
+	- `home/` - homepage sections (HeroBanner, FeaturedProducts, etc.)
+	- `product/` - `ProductCard`, `ProductQuickView`
+- `src/contexts/CartContext.tsx` - cart state and actions
+- `src/data/products.ts` - local sample product data
+- `src/lib/utils.ts` - helper utilities
+- `public/` - static assets
 
-Simply open [Lovable](https://lovable.dev/projects/a0758880-abdc-4cf3-a5c3-d033a46edd03) and click on Share -> Publish.
+Notes and maintenance
+- This repository currently contains sample product data in `src/data/products.ts`. Replace or connect to a real API/backend when ready.
+- No LICENSE file is included. Add a `LICENSE` if you plan to open-source the project.
 
-## Can I connect a custom domain to my Lovable project?
+Deployment
 
-Yes, you can!
+This app builds to static assets with Vite and can be deployed to Vercel, Netlify, or any static hosting that serves the output of `npm run build`.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Contributing
+- Open an issue or submit pull requests. Keep changes focused and add small tests where appropriate.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Contact
+- Repo: Global-TFC/regal-gifts-boutique
+
+Happy hacking — enjoy building beautiful gift pages!
+
+
