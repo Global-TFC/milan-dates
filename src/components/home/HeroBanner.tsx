@@ -62,17 +62,14 @@ const HeroBanner = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
 
-                <div className="absolute inset-0 flex items-center px-10">
-                  <div className="max-w-xl text-white text-left">
-                    <h1 className="text-2xl md:text-3xl font-semibold mb-2">{truncate(slide.product?.name, 40) ?? 'Ramadan Gifts'}</h1>
-                    <p className="mb-4 text-sm">{slide.desc ?? truncate(slide.product?.description, 80) ?? 'Curated hampers and premium dates.'}</p>
-                    <div className="flex gap-3">
-                      <Link to={'/shop'}>
-                        <Button className="px-3 py-2 text-sm bg-transparent border  border-white text-white hover:bg-white/10">
-                          Show Now <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
+                <div className="absolute inset-0 px-8">
+                  {/* ...existing code... */}
+                  <div className="absolute bottom-6 right-6">
+                    <Link to={'/shop'}>
+                      <Button className="px-3 py-2 text-sm bg-transparent border border-white text-white hover:bg-white/10">
+                        {slide.desc} <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
