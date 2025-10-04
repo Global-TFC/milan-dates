@@ -3,6 +3,7 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import RamadanCollection from '@/components/home/RamadanCollection';
 import BestSellers from '@/components/home/BestSellers';
 import VideoSection from '@/components/home/VideoSection';
+import MapSection from '@/components/home/MapSection';
 import SEO from '@/components/SEO';
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
       <RamadanCollection />
       <BestSellers />
       <VideoSection />
+      <MapSection />
     </>
   );
 };
