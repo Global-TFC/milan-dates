@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { products, ramadanCollection } from '@/data/products';
+import { getProductsData } from '@/data/products';
 import ProductCard from '@/components/product/ProductCard';
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
@@ -15,6 +15,8 @@ import { Filter, Grid, List } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { useTranslation } from 'react-i18next';
+import { Product } from '@/types/product';
 
 const Shop = () => {
   const { category, collection } = useParams();
@@ -22,12 +24,37 @@ const Shop = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
+  const currentLanguage = i18n.language;
+
+  // Load products on component mount
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        const fetchedProducts = await getProductsData();
+        setProducts(fetchedProducts);
+        setError(null);
+      } catch (err) {
+        console.error('Error loading products:', err);
+        setError('Failed to load products');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   // Get unique categories
   const categories = useMemo(() => {
     const cats = new Set(products.map(p => p.category));
     return Array.from(cats);
-  }, []);
+  }, [products]);
 
   // Filter products based on route and filters
   const filteredProducts = useMemo(() => {
@@ -35,7 +62,7 @@ const Shop = () => {
 
     // Route-based filtering
     if (collection === 'ramadan') {
-      filtered = ramadanCollection;
+      filtered = products.filter(p => p.category === 'Gift Hampers' || p.badge === 'Limited Edition');
     } else if (category) {
       const categoryMap: Record<string, string> = {
         'dates': 'Dates',
@@ -52,35 +79,75 @@ const Shop = () => {
     }
 
     // Price filter
-    filtered = filtered.filter(p => p.price >= priceRange[0] && p.price <= priceRange[1]);
+    filtered = filtered.filter(p => {
+      const price = isArabic && p.price_ar ? p.price_ar : p.price;
+      return price >= priceRange[0] && price <= priceRange[1];
+    });
 
     // Sorting
     switch (sortBy) {
       case 'price-low':
-        filtered = [...filtered].sort((a, b) => a.price - b.price);
+        filtered = [...filtered].sort((a, b) => {
+          const priceA = isArabic && a.price_ar ? a.price_ar : a.price;
+          const priceB = isArabic && b.price_ar ? b.price_ar : b.price;
+          return priceA - priceB;
+        });
         break;
       case 'price-high':
-        filtered = [...filtered].sort((a, b) => b.price - a.price);
+        filtered = [...filtered].sort((a, b) => {
+          const priceA = isArabic && a.price_ar ? a.price_ar : a.price;
+          const priceB = isArabic && b.price_ar ? b.price_ar : b.price;
+          return priceB - priceA;
+        });
         break;
       case 'name':
-        filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+        // Sort by Arabic name if Arabic is selected, otherwise by English name
+        filtered = [...filtered].sort((a, b) => {
+          const nameA = isArabic ? (a.name_ar || a.name) : a.name;
+          const nameB = isArabic ? (b.name_ar || b.name) : b.name;
+          return nameA.localeCompare(nameB);
+        });
         break;
     }
 
     return filtered;
-  }, [category, collection, selectedCategories, priceRange, sortBy]);
+  }, [products, category, collection, selectedCategories, priceRange, sortBy, isArabic]);
 
   const pageTitle = collection === 'ramadan' 
-    ? 'Ramadan Collection'
+    ? isArabic ? 'تشكيلة رمضان' : 'Ramadan Collection'
     : category 
-    ? category.charAt(0).toUpperCase() + category.slice(1)
-    : 'All Products';
+    ? isArabic ? (category.charAt(0).toUpperCase() + category.slice(1)) : (category.charAt(0).toUpperCase() + category.slice(1))
+    : isArabic ? 'جميع المنتجات' : 'All Products';
 
   const pageDescription = collection === 'ramadan'
-    ? 'Exclusive Ramadan collection featuring premium dates, gift hampers, and artisanal treats perfect for Iftar and Eid celebrations.'
+    ? isArabic ? 'تشكيلة رمضان الحصرية التي تحتوي على تمور فاخرة وسلال هدايا وحلويات فنية مثالية لوجبات الإفطار وعيد الفطر.' : 'Exclusive Ramadan collection featuring premium dates, gift hampers, and artisanal treats perfect for Iftar and Eid celebrations.'
     : category
-    ? `Browse our selection of premium ${category}. Hand-selected luxury products for gifting and personal indulgence.`
-    : 'Shop our complete collection of luxury gourmet dates, artisanal chocolates, premium honey, and elegant gift hampers.';
+    ? isArabic ? `تصفح مجموعة ${category} الفاخرة لدينا. منتجات فاخرة مختارة يدوياً للهدايا والاستمتاع الشخصي.` : `Browse our selection of premium ${category}. Hand-selected luxury products for gifting and personal indulgence.`
+    : isArabic ? 'تسوق مجموعتنا الكاملة من التمور الفاخرة والشوكولاتة الفنية والعسل الفاخر وسلال الهدايا الأنيقة.' : 'Shop our complete collection of luxury gourmet dates, artisanal chocolates, premium honey, and elegant gift hampers.';
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">Loading products...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">{error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background py-8">
@@ -94,7 +161,7 @@ const Shop = () => {
         <div className="mb-8">
           <h1 className="text-3xl lg:text-4xl font-playfair font-bold mb-2">{pageTitle}</h1>
           <p className="text-muted-foreground">
-            Showing {filteredProducts.length} products
+            {isArabic ? `عرض ${filteredProducts.length} منتج` : `Showing ${filteredProducts.length} products`}
           </p>
         </div>
 
@@ -104,14 +171,14 @@ const Shop = () => {
             <div className="bg-card rounded-lg p-6 shadow-soft sticky top-24">
               <div className="flex items-center space-x-2 mb-4">
                 <Filter className="h-5 w-5" />
-                <h3 className="font-semibold">Filters</h3>
+                <h3 className="font-semibold">{isArabic ? 'الفلاتر' : 'Filters'}</h3>
               </div>
 
               <Separator className="mb-6" />
 
               {/* Categories */}
               <div className="mb-6">
-                <h4 className="font-medium mb-3">Categories</h4>
+                <h4 className="font-medium mb-3">{isArabic ? 'الفئات' : 'Categories'}</h4>
                 <div className="space-y-2">
                   {categories.map((cat) => (
                     <div key={cat} className="flex items-center space-x-2">
@@ -136,7 +203,7 @@ const Shop = () => {
 
               {/* Price Range */}
               <div className="mb-6">
-                <h4 className="font-medium mb-3">Price Range</h4>
+                <h4 className="font-medium mb-3">{isArabic ? 'نطاق السعر' : 'Price Range'}</h4>
                 <div className="space-y-2">
                   <Button
                     variant={priceRange[1] === 2500 ? "default" : "outline"}
@@ -144,7 +211,7 @@ const Shop = () => {
                     className="w-full justify-start"
                     onClick={() => setPriceRange([0, 2500])}
                   >
-                    Under ₹2,500
+                    {isArabic ? `أقل من ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Under ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
                   </Button>
                   <Button
                     variant={priceRange[0] === 2500 && priceRange[1] === 5000 ? "default" : "outline"}
@@ -152,7 +219,7 @@ const Shop = () => {
                     className="w-full justify-start"
                     onClick={() => setPriceRange([2500, 5000])}
                   >
-                    ₹2,500 - ₹5,000
+                    {2500} - {5000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
                   </Button>
                   <Button
                     variant={priceRange[0] === 5000 && priceRange[1] === 10000 ? "default" : "outline"}
@@ -160,7 +227,7 @@ const Shop = () => {
                     className="w-full justify-start"
                     onClick={() => setPriceRange([5000, 10000])}
                   >
-                    ₹5,000 - ₹10,000
+                    {5000} - {10000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
                   </Button>
                   <Button
                     variant={priceRange[0] === 10000 ? "default" : "outline"}
@@ -168,7 +235,7 @@ const Shop = () => {
                     className="w-full justify-start"
                     onClick={() => setPriceRange([10000, 50000])}
                   >
-                    Above ₹10,000
+                    {isArabic ? `أكثر من ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Above ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
                   </Button>
                 </div>
               </div>
@@ -182,7 +249,7 @@ const Shop = () => {
                   setPriceRange([0, 50000]);
                 }}
               >
-                Clear All Filters
+                {isArabic ? 'مسح جميع الفلاتر' : 'Clear All Filters'}
               </Button>
             </div>
           </div>
@@ -210,13 +277,13 @@ const Shop = () => {
 
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Sort by" />
+                  <SelectValue placeholder={isArabic ? 'ترتيب حسب' : 'Sort by'} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="featured">Featured</SelectItem>
-                  <SelectItem value="name">Name</SelectItem>
-                  <SelectItem value="price-low">Price: Low to High</SelectItem>
-                  <SelectItem value="price-high">Price: High to Low</SelectItem>
+                  <SelectItem value="featured">{isArabic ? 'مميز' : 'Featured'}</SelectItem>
+                  <SelectItem value="name">{isArabic ? 'الاسم' : 'Name'}</SelectItem>
+                  <SelectItem value="price-low">{isArabic ? 'السعر: من الأقل للأعلى' : 'Price: Low to High'}</SelectItem>
+                  <SelectItem value="price-high">{isArabic ? 'السعر: من الأعلى للأقل' : 'Price: High to Low'}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -230,7 +297,7 @@ const Shop = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No products found matching your filters.</p>
+                <p className="text-muted-foreground">{isArabic ? 'لم يتم العثور على منتجات مطابقة لفلاترك.' : 'No products found matching your filters.'}</p>
               </div>
             )}
           </div>

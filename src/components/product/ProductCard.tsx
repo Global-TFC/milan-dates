@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { ShoppingBag, Eye } from 'lucide-react';
 import { useState } from 'react';
 import ProductQuickView from './ProductQuickView';
+import { useTranslation } from 'react-i18next';
+import { formatPrice } from '@/lib/currency';
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +16,13 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const { i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
+  const currentLanguage = i18n.language;
+
+  // Get the appropriate price based on language
+  const currentPrice = isArabic && product.price_ar ? product.price_ar : product.price;
+  const currentOriginalPrice = isArabic && product.originalPrice_ar ? product.originalPrice_ar : product.originalPrice;
 
   return (
     <>
@@ -22,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="relative overflow-hidden aspect-square">
             <img
               src={product.image}
-              alt={product.name}
+              alt={isArabic ? product.name_ar : product.name}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
             {product.badge && (
@@ -40,8 +49,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 onClick={() => setQuickViewOpen(true)}
               >
                 <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                <span className="hidden sm:inline">Quick View</span>
-                <span className="sm:hidden">View</span>
+                <span className="hidden sm:inline">{isArabic ? 'عرض سريع' : 'Quick View'}</span>
+                <span className="sm:hidden">{isArabic ? 'عرض' : 'View'}</span>
               </Button>
               <Button
                 size="sm"
@@ -50,29 +59,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 onClick={() => addToCart(product)}
               >
                 <ShoppingBag className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
-                <span className="hidden sm:inline">Add to Cart</span>
-                <span className="sm:hidden">Add</span>
+                <span className="hidden sm:inline">{isArabic ? 'أضف إلى السلة' : 'Add to Cart'}</span>
+                <span className="sm:hidden">{isArabic ? 'أضف' : 'Add'}</span>
               </Button>
             </div>
           </div>
 
           <div className="p-4">
             <p className="text-xs text-muted-foreground mb-1">{product.category}</p>
-            <h3 className="font-semibold text-foreground mb-2 line-clamp-2">{product.name}</h3>
+            <h3 className="font-semibold text-foreground mb-2 line-clamp-2">{isArabic ? product.name_ar : product.name}</h3>
             
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-lg font-bold text-accent">
-                  ₹{product.price.toLocaleString('en-IN')}
+                  {formatPrice(currentPrice, currentLanguage)}
                 </span>
-                {product.originalPrice && (
-                  <span className="text-sm text-muted-foreground line-through ml-2">
-                    ₹{product.originalPrice.toLocaleString('en-IN')}
+                {currentOriginalPrice && (
+                  <span className={`text-sm text-muted-foreground line-through ${isArabic ? 'mr-2' : 'ml-2'}`}>
+                    {formatPrice(currentOriginalPrice, currentLanguage)}
                   </span>
                 )}
               </div>
               {product.weight && (
-                <span className="text-xs text-muted-foreground">{product.weight}</span>
+                <span className="text-xs text-muted-foreground">{isArabic ? (product.sizes?.[0]?.label_ar || product.weight) : product.weight}</span>
               )}
             </div>
           </div>

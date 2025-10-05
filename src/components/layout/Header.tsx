@@ -1,53 +1,56 @@
 import { Menu, Search, ShoppingBag, User, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import CartDrawer from '@/components/cart/CartDrawer';
 const Header = () => {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const {
     cartCount,
     setIsCartOpen
   } = useCart();
   const navigationItems = [{
-    title: 'Shop',
+    title: t('nav.shop'),
     items: [{
-      name: 'All Products',
+      name: t('nav.menu.allProducts'),
       href: '/shop'
     }, {
-      name: 'Dates',
+      name: t('nav.menu.dates'),
       href: '/shop/dates'
     }, {
-      name: 'Chocolates',
+      name: t('nav.menu.chocolates'),
       href: '/shop/chocolates'
     }, {
-      name: 'Honey',
+      name: t('nav.menu.honey'),
       href: '/shop/honey'
     }, {
-      name: 'Gift Hampers',
+      name: t('nav.menu.giftHampers'),
       href: '/shop/hampers'
     }]
   }, {
-    title: 'Festive Collections',
+    title: t('nav.menu.festiveCollections'),
     items: [{
-      name: 'Ramadan Special',
+      name: t('nav.menu.ramadanSpecial'),
       href: '/collections/ramadan'
     }, {
-      name: 'Wedding Gifts',
+      name: t('nav.menu.weddingGifts'),
       href: '/collections/wedding'
     }, {
-      name: 'Corporate Gifts',
+      name: t('nav.menu.corporateGifts'),
       href: '/collections/corporate'
     }]
   }, {
-    title: 'World of MilanDates',
+    title: t('nav.menu.worldOf'),
     items: [{
-      name: 'Our Story',
+      name: t('nav.ourStory'),
       href: '/our-story'
     }, {
-      name: 'Craftsmanship',
+      name: t('nav.craftsmanship'),
       href: '/craftsmanship'
     }]
   }];
@@ -55,7 +58,7 @@ const Header = () => {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 border-b border-border">
         {/* Top Bar */}
         <div className="bg-primary text-primary-foreground py-2 text-center text-sm">
-          <p>✨ Ramadan Special: Get 20% off on all gift hampers | Free shipping above ₹2,999</p>
+          <p>{t('promo.ramadan.title')}</p>
         </div>
 
         {/* Main Header */}
@@ -68,7 +71,7 @@ const Header = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <h1 className="text-2xl font-playfair font-bold text-primary">MilanDates</h1>
+              <h1 className="text-2xl font-bold text-primary">{t('common.brandName')}</h1>
             </Link>
 
             {/* Desktop Navigation */}
@@ -92,7 +95,7 @@ const Header = () => {
                   </NavigationMenuItem>)}
                 <NavigationMenuItem>
                   <a href="#footer" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
-                    Contact Us
+                    {t('nav.contactUs')}
                   </a>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -100,8 +103,7 @@ const Header = () => {
 
             {/* Right Actions */}
             <div className="flex items-center space-x-4">
-              
-              
+              <LanguageSwitcher />
               <Button variant="ghost" size="icon" className="relative" onClick={() => setIsCartOpen(true)}>
                 <ShoppingBag className="h-5 w-5" />
                 {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
@@ -129,7 +131,7 @@ const Header = () => {
                   </ul>
                 </div>)}
               <a href="#footer" className="text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
-                Contact Us
+                {t('nav.contactUs')}
               </a>
             </div>
           </div>}

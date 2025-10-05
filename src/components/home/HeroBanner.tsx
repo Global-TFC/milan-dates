@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import hamper from '@/assets/hamper.png';
 import hero1 from '@/assets/hero1.png';
 import hero2 from '@/assets/hero2.png';
@@ -23,15 +24,16 @@ const slideProducts = [
 ];
 
 const slides = [
-  { src: hamper, product: slideProducts[0], desc: 'Luxurious hampers for the family' },
-  { src: hero1, product: slideProducts[1], desc: 'Dubai chocolate dipped dates' },
-  { src: hero2, product: slideProducts[2], desc: 'Hand-stuffed premium dates' },
+  { src: hamper, product: slideProducts[0], descKey: 'hero.slide1' },
+  { src: hero1, product: slideProducts[1], descKey: 'hero.slide2' },
+  { src: hero2, product: slideProducts[2], descKey: 'hero.slide3' },
 ];
 
 const truncate = (s?: string, n = 70) => (s ? (s.length > n ? s.slice(0, n - 3) + '...' : s) : '');
 
 const HeroBanner = () => {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
+  const { t } = useTranslation();
 
   // Autoplay: advance every 4s
   React.useEffect(() => {
@@ -67,7 +69,7 @@ const HeroBanner = () => {
                   <div className="absolute bottom-6 right-6">
                     <Link to={'/shop'}>
                       <Button className="px-3 py-2 text-sm bg-transparent border border-white text-white hover:bg-white/10">
-                        {slide.desc} <ArrowRight className="ml-2 h-4 w-4" />
+                        {t(slide.descKey)} <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                   </div>

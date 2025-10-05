@@ -1,6 +1,7 @@
 import { Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Dialog,
   DialogContent,
@@ -8,6 +9,7 @@ import {
 
 const VideoSection = () => {
   const [videoOpen, setVideoOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -17,22 +19,20 @@ const VideoSection = () => {
             {/* Content */}
             <div>
               <h2 className="text-3xl lg:text-4xl font-playfair font-bold mb-6">
-                The Art of Creating Perfect Gift Boxes
+                {t('sections.video.title')}
               </h2>
               
               <p className="text-muted-foreground mb-6">
-                Watch our master craftsmen carefully select and arrange each premium date, 
-                chocolate, and delicacy into our signature gift boxes. Every MilanDates creation 
-                is a work of art, designed to deliver moments of pure luxury.
+                {t('sections.video.description')}
               </p>
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">
                   <span className="text-accent text-xl">✦</span>
                   <div>
-                    <h4 className="font-semibold mb-1">Handpicked Selection</h4>
+                    <h4 className="font-semibold mb-1">{t('sections.video.features.selection.title')}</h4>
                     <p className="text-sm text-muted-foreground">
-                      Each date is individually inspected for perfect ripeness and quality
+                      {t('sections.video.features.selection.description')}
                     </p>
                   </div>
                 </div>
@@ -40,9 +40,9 @@ const VideoSection = () => {
                 <div className="flex items-start space-x-3">
                   <span className="text-accent text-xl">✦</span>
                   <div>
-                    <h4 className="font-semibold mb-1">Artisanal Craftsmanship</h4>
+                    <h4 className="font-semibold mb-1">{t('sections.video.features.craftsmanship.title')}</h4>
                     <p className="text-sm text-muted-foreground">
-                      Traditional techniques passed down through generations
+                      {t('sections.video.features.craftsmanship.description')}
                     </p>
                   </div>
                 </div>
@@ -50,9 +50,9 @@ const VideoSection = () => {
                 <div className="flex items-start space-x-3">
                   <span className="text-accent text-xl">✦</span>
                   <div>
-                    <h4 className="font-semibold mb-1">Elegant Presentation</h4>
+                    <h4 className="font-semibold mb-1">{t('sections.video.features.presentation.title')}</h4>
                     <p className="text-sm text-muted-foreground">
-                      Luxurious packaging that makes every gift unforgettable
+                      {t('sections.video.features.presentation.description')}
                     </p>
                   </div>
                 </div>
@@ -64,7 +64,7 @@ const VideoSection = () => {
                 onClick={() => setVideoOpen(true)}
               >
                 <Play className="h-5 w-5 mr-2" />
-                Watch the Process
+                {t('sections.video.watchProcess')}
               </Button>
             </div>
 
@@ -84,7 +84,7 @@ const VideoSection = () => {
               </div>
               
               <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-4 py-2 rounded-lg font-medium shadow-lg">
-                Behind the Scenes
+                {t('sections.video.behindScenes')}
               </div>
             </div>
           </div>

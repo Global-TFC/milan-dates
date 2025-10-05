@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import rtlPlugin from 'tailwindcss-rtl';
+
+
 
 export default {
   darkMode: ["class"],
@@ -16,6 +19,8 @@ export default {
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
         'inter': ['Inter', 'sans-serif'],
+        'arabic': ['Noto Sans Arabic', 'sans-serif'],
+        'sans': ['Inter', 'Noto Sans Arabic', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -111,5 +116,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), rtlPlugin],
 } satisfies Config;
