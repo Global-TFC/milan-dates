@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
-import hamper from '@/assets/hamper.png';
 import hero1 from '@/assets/hero1.png';
 import hero2 from '@/assets/hero2.png';
+import hero3 from '@/assets/hero3.png';
 import { products } from '@/data/products';
 import {
   Carousel,
@@ -24,9 +24,9 @@ const slideProducts = [
 ];
 
 const slides = [
-  { src: hamper, product: slideProducts[0], descKey: 'hero.slide1' },
   { src: hero1, product: slideProducts[1], descKey: 'hero.slide2' },
   { src: hero2, product: slideProducts[2], descKey: 'hero.slide3' },
+  { src: hero3, product: slideProducts[2], descKey: 'hero.slide3' },
 ];
 
 const truncate = (s?: string, n = 70) => (s ? (s.length > n ? s.slice(0, n - 3) + '...' : s) : '');

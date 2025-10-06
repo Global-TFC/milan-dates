@@ -17,6 +17,16 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { useTranslation } from 'react-i18next';
 import { Product } from '@/types/product';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 
 const Shop = () => {
   const { category, collection } = useParams();
@@ -125,6 +135,94 @@ const Shop = () => {
     ? isArabic ? `تصفح مجموعة ${category} الفاخرة لدينا. منتجات فاخرة مختارة يدوياً للهدايا والاستمتاع الشخصي.` : `Browse our selection of premium ${category}. Hand-selected luxury products for gifting and personal indulgence.`
     : isArabic ? 'تسوق مجموعتنا الكاملة من التمور الفاخرة والشوكولاتة الفنية والعسل الفاخر وسلال الهدايا الأنيقة.' : 'Shop our complete collection of luxury gourmet dates, artisanal chocolates, premium honey, and elegant gift hampers.';
 
+  // Filter component to be used in both desktop sidebar and mobile drawer
+  const FilterComponent = () => (
+    <div className="bg-card rounded-lg p-6 shadow-soft">
+      <div className="flex items-center space-x-2 mb-4">
+        <Filter className="h-5 w-5" />
+        <h3 className="font-semibold">{isArabic ? 'الفلاتر' : 'Filters'}</h3>
+      </div>
+
+      <Separator className="mb-6" />
+
+      {/* Categories */}
+      <div className="mb-6">
+        <h4 className="font-medium mb-3">{isArabic ? 'الفئات' : 'Categories'}</h4>
+        <div className="space-y-2">
+          {categories.map((cat) => (
+            <div key={cat} className="flex items-center space-x-2">
+              <Checkbox
+                id={cat}
+                checked={selectedCategories.includes(cat)}
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    setSelectedCategories([...selectedCategories, cat]);
+                  } else {
+                    setSelectedCategories(selectedCategories.filter(c => c !== cat));
+                  }
+                }}
+              />
+              <Label htmlFor={cat} className="text-sm cursor-pointer">
+                {cat}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Price Range */}
+      <div className="mb-6">
+        <h4 className="font-medium mb-3">{isArabic ? 'نطاق السعر' : 'Price Range'}</h4>
+        <div className="space-y-2">
+          <Button
+            variant={priceRange[1] === 2500 ? "default" : "outline"}
+            size="sm"
+            className="w-full justify-start"
+            onClick={() => setPriceRange([0, 2500])}
+          >
+            {isArabic ? `أقل من ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Under ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
+          </Button>
+          <Button
+            variant={priceRange[0] === 2500 && priceRange[1] === 5000 ? "default" : "outline"}
+            size="sm"
+            className="w-full justify-start"
+            onClick={() => setPriceRange([2500, 5000])}
+          >
+            {2500} - {5000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
+          </Button>
+          <Button
+            variant={priceRange[0] === 5000 && priceRange[1] === 10000 ? "default" : "outline"}
+            size="sm"
+            className="w-full justify-start"
+            onClick={() => setPriceRange([5000, 10000])}
+          >
+            {5000} - {10000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
+          </Button>
+          <Button
+            variant={priceRange[0] === 10000 ? "default" : "outline"}
+            size="sm"
+            className="w-full justify-start"
+            onClick={() => setPriceRange([10000, 50000])}
+          >
+            {isArabic ? `أكثر من ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Above ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
+          </Button>
+        </div>
+      </div>
+
+      {/* Clear Filters */}
+      <Button
+        variant="outline"
+        className="w-full"
+        onClick={() => {
+          setSelectedCategories([]);
+          setPriceRange([0, 50000]);
+        }}
+      >
+        {isArabic ? 'مسح جميع الفلاتر' : 'Clear All Filters'}
+      </Button>
+    </div>
+  );
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background py-8">
@@ -166,98 +264,41 @@ const Shop = () => {
         </div>
 
         <div className="grid lg:grid-cols-4 gap-8">
-          {/* Filters Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="bg-card rounded-lg p-6 shadow-soft sticky top-24">
-              <div className="flex items-center space-x-2 mb-4">
-                <Filter className="h-5 w-5" />
-                <h3 className="font-semibold">{isArabic ? 'الفلاتر' : 'Filters'}</h3>
-              </div>
-
-              <Separator className="mb-6" />
-
-              {/* Categories */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">{isArabic ? 'الفئات' : 'Categories'}</h4>
-                <div className="space-y-2">
-                  {categories.map((cat) => (
-                    <div key={cat} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={cat}
-                        checked={selectedCategories.includes(cat)}
-                        onCheckedChange={(checked) => {
-                          if (checked) {
-                            setSelectedCategories([...selectedCategories, cat]);
-                          } else {
-                            setSelectedCategories(selectedCategories.filter(c => c !== cat));
-                          }
-                        }}
-                      />
-                      <Label htmlFor={cat} className="text-sm cursor-pointer">
-                        {cat}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price Range */}
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">{isArabic ? 'نطاق السعر' : 'Price Range'}</h4>
-                <div className="space-y-2">
-                  <Button
-                    variant={priceRange[1] === 2500 ? "default" : "outline"}
-                    size="sm"
-                    className="w-full justify-start"
-                    onClick={() => setPriceRange([0, 2500])}
-                  >
-                    {isArabic ? `أقل من ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Under ${2500} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
-                  </Button>
-                  <Button
-                    variant={priceRange[0] === 2500 && priceRange[1] === 5000 ? "default" : "outline"}
-                    size="sm"
-                    className="w-full justify-start"
-                    onClick={() => setPriceRange([2500, 5000])}
-                  >
-                    {2500} - {5000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
-                  </Button>
-                  <Button
-                    variant={priceRange[0] === 5000 && priceRange[1] === 10000 ? "default" : "outline"}
-                    size="sm"
-                    className="w-full justify-start"
-                    onClick={() => setPriceRange([5000, 10000])}
-                  >
-                    {5000} - {10000} {currentLanguage === 'ar' ? 'SAR' : '₹'}
-                  </Button>
-                  <Button
-                    variant={priceRange[0] === 10000 ? "default" : "outline"}
-                    size="sm"
-                    className="w-full justify-start"
-                    onClick={() => setPriceRange([10000, 50000])}
-                  >
-                    {isArabic ? `أكثر من ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}` : `Above ${10000} ${currentLanguage === 'ar' ? 'SAR' : '₹'}`}
-                  </Button>
-                </div>
-              </div>
-
-              {/* Clear Filters */}
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => {
-                  setSelectedCategories([]);
-                  setPriceRange([0, 50000]);
-                }}
-              >
-                {isArabic ? 'مسح جميع الفلاتر' : 'Clear All Filters'}
-              </Button>
-            </div>
+          {/* Filters Sidebar - Hidden on mobile, visible on desktop */}
+          <div className="lg:col-span-1 hidden lg:block">
+            <FilterComponent />
           </div>
 
           {/* Products Grid */}
           <div className="lg:col-span-3">
             {/* Sort and View Options */}
             <div className="flex items-center justify-between mb-6">
+              {/* Mobile Filter Button */}
+              <div className="lg:hidden">
+                <Drawer>
+                  <DrawerTrigger asChild>
+                    <Button variant="outline" className="flex items-center space-x-2">
+                      <Filter className="h-4 w-4" />
+                      <span>{isArabic ? 'الفلاتر' : 'Filters'}</span>
+                    </Button>
+                  </DrawerTrigger>
+                  <DrawerContent>
+                    <DrawerHeader>
+                      <DrawerTitle>{isArabic ? 'الفلاتر' : 'Filters'}</DrawerTitle>
+                      <DrawerDescription>{isArabic ? 'قم بتصفية المنتجات حسب الفئة أو السعر' : 'Filter products by category or price'}</DrawerDescription>
+                    </DrawerHeader>
+                    <div className="px-4">
+                      <FilterComponent />
+                    </div>
+                    <DrawerFooter className="px-4">
+                      <DrawerClose asChild>
+                        <Button>{isArabic ? 'تطبيق الفلاتر' : 'Apply Filters'}</Button>
+                      </DrawerClose>
+                    </DrawerFooter>
+                  </DrawerContent>
+                </Drawer>
+              </div>
+
               <div className="flex items-center space-x-2">
                 <Button
                   variant={viewMode === 'grid' ? 'default' : 'outline'}

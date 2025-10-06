@@ -57,8 +57,12 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
     };
     
     addToCart(productWithPrice, quantity);
-    onClose();
-    setQuantity(1);
+    
+    // Delay closing the dialog to allow the cart drawer to open properly
+    setTimeout(() => {
+      onClose();
+      setQuantity(1);
+    }, 300);
   };
 
   return (
