@@ -42,7 +42,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // previously showed a toast here when item was added; disabled per request
       return [...current, { ...product, quantity, selectedSize }];
     });
-    setIsCartOpen(true);
+    // setIsCartOpen(true);
   };
 
   const removeFromCart = (productId: string) => {
