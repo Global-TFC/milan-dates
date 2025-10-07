@@ -8,7 +8,7 @@ const currencySettings = {
   ar: {
     currency: 'SAR',
     locale: 'ar-SA',
-    symbol: 'SAR'
+    symbol: '﷼'
   }
 };
 
