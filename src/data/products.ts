@@ -1,8 +1,8 @@
 import { Product } from '@/types/product';
-import chocolateDates from '@/assets/chocolate-dates.jpg';
-import honeyJar from '@/assets/honey-jar.jpg';
-import ramadanHamper from '@/assets/ramadan-hamper.jpg';
-import stuffedDates from '@/assets/stuffed-dates.jpg';
+import product from '@/assets/product.png';
+import product1 from '@/assets/product1.png';
+import product2 from '@/assets/product2.png';
+import product3 from '@/assets/product3.png';
 import { getProducts } from './productsService';
 
 // Keep the existing products array as fallback data
@@ -16,7 +16,7 @@ export const products: Product[] = [
     price_ar: 115,
     originalPrice: 2999,
     originalPrice_ar: 140,
-    image: chocolateDates,
+    image: product1,
     description: 'Hand-selected Medjool dates covered in Belgian dark chocolate, perfect for gifting.',
     description_ar: 'تمور مجدول مختارة يدوياً مغطاة بالشوكولاتة Belgi dark، مثالية للهدايا.',
     inStock: true,
@@ -35,7 +35,7 @@ export const products: Product[] = [
     category: 'Honey',
     price: 1899,
     price_ar: 85,
-    image: honeyJar,
+    image: product2,
     description: 'Pure organic honey sourced from the finest apiaries, with a rich golden color and smooth texture.',
     description_ar: 'عسل عضوي خالص من أفضل المصانع، بلون ذهبي غني وملمس ناعم.',
     inStock: true,
@@ -50,7 +50,7 @@ export const products: Product[] = [
     price_ar: 360,
     originalPrice: 9999,
     originalPrice_ar: 450,
-    image: ramadanHamper,
+    image: product3,
     description: 'Luxurious festive hamper containing premium dates, chocolates, dry fruits, and traditional sweets.',
     description_ar: 'سلة احتفالات فاخرة تحتوي على تمور فاخرة، شوكولاتة، فواكه مجففة، وحلويات تقليدية.',
     inStock: true,
@@ -68,7 +68,7 @@ export const products: Product[] = [
     category: 'Dates',
     price: 3299,
     price_ar: 150,
-    image: stuffedDates,
+    image: product,
     description: 'Exquisite dates stuffed with almonds, pistachios, and cashews, presented in an elegant box.',
     description_ar: 'تمور راقية محشوة باللوز وال pistachios والفستق، مقدمة في علبة أنيقة.',
     inStock: true,
@@ -84,7 +84,7 @@ export const products: Product[] = [
     price_ar: 210,
     originalPrice: 5499,
     originalPrice_ar: 250,
-    image: chocolateDates,
+    image: product1,
     description: 'A curated selection of our finest dates in a signature gift box.',
     description_ar: 'مجموعة مختارة من أجود التمور في علبة هدايا مميزة.',
     inStock: true,
@@ -97,7 +97,7 @@ export const products: Product[] = [
     category: 'Gift Hampers',
     price: 15999,
     price_ar: 720,
-    image: ramadanHamper,
+    image: product2,
     description: 'Premium corporate gifting solution with customizable packaging and personalized messages.',
     description_ar: 'حل الهدايا المؤسسية الفاخر مع تغليف قابل للتخصيص ورسائل شخصية.',
     inStock: true,
@@ -115,7 +115,7 @@ export const products: Product[] = [
     category: 'Honey',
     price: 2299,
     price_ar: 105,
-    image: honeyJar,
+    image: product3,
     description: 'Unprocessed raw honey with natural enzymes and antioxidants.',
     description_ar: 'عسل خام غير معالج مع إنزيمات طبيعية ومضادات الأكسدة.',
     inStock: true,
@@ -128,7 +128,7 @@ export const products: Product[] = [
     category: 'Dry Fruits',
     price: 3799,
     price_ar: 170,
-    image: stuffedDates,
+    image: product,
     description: 'Premium quality almonds, cashews, pistachios, and walnuts in an elegant presentation.',
     description_ar: 'جودة فاخرة من اللوز والفستق وال pistachios والجوز في عرض أنيق.',
     inStock: true,

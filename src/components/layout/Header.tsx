@@ -52,15 +52,6 @@ const Header = () => {
       name: t('nav.menu.corporateGifts'),
       href: '/collections/corporate'
     }]
-  }, {
-    title: t('nav.menu.worldOf'),
-    items: [{
-      name: t('nav.ourStory'),
-      href: '/our-story'
-    }, {
-      name: t('nav.craftsmanship'),
-      href: '/craftsmanship'
-    }]
   }];
   
   const handleWhatsAppCheckout = () => {
@@ -95,9 +86,9 @@ const Header = () => {
   return <>
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 border-b border-border">
         {/* Top Bar */}
-        <div className="bg-primary text-primary-foreground py-2 text-center text-sm">
+        {/* <div className="bg-primary text-primary-foreground py-2 text-center text-sm">
           <p>{t('promo.ramadan.title')}</p>
-        </div>
+        </div> */}
 
         {/* Main Header */}
         <div className="container mx-auto px-4">
@@ -123,7 +114,7 @@ const Header = () => {
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                         {item.items.map(subItem => <li key={subItem.name}>
                             <NavigationMenuLink asChild>
-                              <Link to={subItem.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                              <Link to={subItem.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
                                 <div className="text-sm font-medium leading-none">{subItem.name}</div>
                               </Link>
                             </NavigationMenuLink>
@@ -132,9 +123,22 @@ const Header = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>)}
                 <NavigationMenuItem>
-                  <a href="#footer" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
+                  <Link to="/our-story" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
+                    {t('footer.links.about')}
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <button 
+                    onClick={() => {
+                      // Replace with your business WhatsApp number (without + or spaces)
+                      const whatsappNumber = '919999999999'; // Example: 919999999999 for India
+                      const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+                      window.open(whatsappUrl, '_blank');
+                    }}
+                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none"
+                  >
                     {t('nav.contactUs')}
-                  </a>
+                  </button>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -168,9 +172,21 @@ const Header = () => {
                       </li>)}
                   </ul>
                 </div>)}
-              <a href="#footer" className="text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
+              <Link to="/our-story" className="text-muted-foreground hover:text-foreground block mb-2" onClick={() => setMobileMenuOpen(false)}>
+                {t('footer.links.about')}
+              </Link>
+              <button 
+                onClick={() => {
+                  // Replace with your business WhatsApp number (without + or spaces)
+                  const whatsappNumber = '919999999999'; // Example: 919999999999 for India
+                  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+                  window.open(whatsappUrl, '_blank');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-muted-foreground hover:text-foreground"
+              >
                 {t('nav.contactUs')}
-              </a>
+              </button>
             </div>
           </div>}
       </header>

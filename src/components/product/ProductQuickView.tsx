@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/select';
 import { useTranslation } from 'react-i18next';
 import { formatPrice } from '@/lib/currency';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ProductQuickViewProps {
   product: Product;
@@ -36,6 +37,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
   const currentLanguage = i18n.language;
+  const isMobile = useIsMobile();
   
   // Get the appropriate price based on language
   const currentPrice = isArabic && product.price_ar ? product.price_ar : product.price;
@@ -67,12 +69,12 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl">
+      <DialogContent className={`max-w-4xl ${isMobile ? 'max-h-[100vh]' : 'max-h-[90vh]'} overflow-y-auto p-4`}>
         <DialogHeader>
           <DialogTitle className="sr-only">{isArabic ? product.name_ar : product.name}</DialogTitle>
         </DialogHeader>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-1 md:gap-5">
           {/* Product Image */}
           <div className="relative aspect-square overflow-hidden rounded-lg">
             <img
@@ -90,10 +92,10 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
           {/* Product Details */}
           <div className="flex flex-col">
             <div className="flex-1">
-              <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
-              <h2 className="text-2xl font-playfair font-bold mb-3">{isArabic ? product.name_ar : product.name}</h2>
+              <p className="text-sm text-muted-foreground ">{product.category}</p>
+              <h2 className="text-2xl font-playfair font-bold mb-2">{isArabic ? product.name_ar : product.name}</h2>
               
-              <div className="flex items-baseline space-x-3 mb-4">
+              <div className="flex items-baseline space-x-3 mb-1">
                 <span className="text-2xl font-bold text-accent">
                   {formatPrice(selectedPrice, currentLanguage)}
                 </span>
@@ -107,11 +109,11 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
                 )}
               </div>
 
-              <p className="text-muted-foreground mb-6">{isArabic ? product.description_ar : product.description}</p>
+              <p className="text-muted-foreground mb-2">{isArabic ? product.description_ar : product.description}</p>
 
               {/* Size Selection */}
               {product.sizes && product.sizes.length > 0 && (
-                <div className="mb-6">
+                <div className="mb-3">
                   <label className="text-sm font-medium mb-2 block">{t('common.size')}</label>
                   <Select value={selectedSize} onValueChange={setSelectedSize}>
                     <SelectTrigger className="w-full">
@@ -132,7 +134,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
               )}
 
               {/* Quantity Selector */}
-              <div className="mb-6">
+              <div className="flex flex-col items-center">
                 <label className="text-sm font-medium mb-2 block">{t('common.quantity')}</label>
                 <div className="flex items-center space-x-3">
                   <Button

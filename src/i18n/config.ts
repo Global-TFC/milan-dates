@@ -106,20 +106,38 @@ i18n
             empty: 'Your cart is empty',
             continue: 'Continue Shopping',
           },
-          promo: {
-            ramadan: {
-              title: '✨ Ramadan Special: Get 20% off on all gift hampers | Free shipping above ₹2,999'
-            }
-          },
+          // promo: {
+          //   ramadan: {
+          //     title: '✨ Ramadan Special: Get 20% off on all gift hampers | Free shipping above ₹2,999'
+          //   }
+          // },
           product: {
             outOfStock: 'Out of Stock',
             inStock: 'In Stock',
             description: 'Description',
           },
           footer: {
+            companyInfo: 'Company Info',
+            quickLinks: 'Quick Links',
+            customerService: 'Customer Service',
+            contactUs: 'Contact Us',
+            address: 'Rashidi station, G8FQ+RFC, Al Thamad 43831, Saudi Arabia',
+            phone: '+91 98765 43210',
+            email: 'info@milandates.in',
+            rights: 'All rights reserved',
             subscribe: 'Subscribe to our newsletter',
-            email: 'Enter your email',
+            emailPlaceholder: 'Enter your email',
             submit: 'Submit',
+            links: {
+              about: 'About Us',
+              shop: 'Shop All',
+              ramadan: 'Ramadan Collection',
+              corporate: 'Corporate Gifts',
+              shipping: 'Shipping & Delivery',
+              returns: 'Returns & Exchange',
+              terms: 'Terms & Conditions',
+              privacy: 'Privacy Policy'
+            }
           },
           hero: {
             slide1: 'Luxurious hampers for the family',
@@ -222,20 +240,38 @@ i18n
             empty: 'سلة التسوق فارغة',
             continue: 'متابعة التسوق',
           },
-          promo: {
-            ramadan: {
-              title: '✨ عرض رمضان: خصم 20% على جميع سلال الهدايا | شحن مجاني للطلبات فوق 2,999 روبية'
-            }
-          },
+          // promo: {
+          //   ramadan: {
+          //     title: '✨ عرض رمضان: خصم 20% على جميع سلال الهدايا | شحن مجاني للطلبات فوق 2,999 روبية'
+          //   }
+          // },
           product: {
             outOfStock: 'نفذت الكمية',
             inStock: 'متوفر',
             description: 'الوصف',
           },
           footer: {
+            companyInfo: 'معلومات الشركة',
+            quickLinks: 'روابط سريعة',
+            customerService: 'خدمة العملاء',
+            contactUs: 'اتصل بنا',
+            address: 'محطة الراشدي، G8FQ+RFC، الثماد 43831، المملكة العربية السعودية',
+            phone: '+91 98765 43210',
+            email: 'info@milandates.in',
+            rights: 'جميع الحقوق محفوظة',
             subscribe: 'اشترك في نشرتنا الإخبارية',
-            email: 'أدخل بريدك الإلكتروني',
+            emailPlaceholder: 'أدخل بريدك الإلكتروني',
             submit: 'إرسال',
+            links: {
+              about: 'من نحن',
+              shop: 'تسوق الكل',
+              ramadan: 'تشكيلة رمضان',
+              corporate: 'هدايا الشركات',
+              shipping: 'الشحن والتوصيل',
+              returns: 'الإرجاع والاستبدال',
+              terms: 'الشروط والأحكام',
+              privacy: 'سياسة الخصوصية'
+            }
           },
           hero: {
             slide1: 'سلال هدايا فاخرة للعائلة',
