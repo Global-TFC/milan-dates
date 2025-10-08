@@ -1,5 +1,4 @@
 import { Product } from "@/types/product";
-import ProductCard from "@/components/product/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Gift } from "lucide-react";
 import { Link } from "react-router-dom";
