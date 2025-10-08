@@ -1,5 +1,10 @@
 import Papa from 'papaparse';
 import { Product } from '@/types/product';
+// Import local assets
+import product from '@/assets/product.png';
+import product1 from '@/assets/product1.png';
+import product2 from '@/assets/product2.png';
+import product3 from '@/assets/product3.png';
 
 // Google Sheets CSV URL
 const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRFzLx7o19hO8pc3iBPmGWoILq4ddsaeg6uVQH8NdDzIuXDvFqJbc0q9Om4MNjVL3lGTaQ3NC5p0urd/pub?gid=0&single=true&output=csv';
@@ -20,6 +25,18 @@ interface CsvRow {
   weight?: string;
   [key: string]: string | undefined; // For dynamic size fields
 }
+
+// Map product IDs to local assets
+const productImageMap: Record<string, string> = {
+  '1': product,
+  '2': product2,
+  '3': product3,
+  '4': product,
+  '5': product1,
+  '6': product2,
+  '7': product3,
+  '8': product
+};
 
 // Function to fetch products from Google Sheets
 export const fetchProductsFromGoogleSheets = async (): Promise<Product[]> => {
@@ -42,7 +59,8 @@ export const fetchProductsFromGoogleSheets = async (): Promise<Product[]> => {
                   name: row.name,
                   category: row.category,
                   price: parseInt(row.price) || 0,
-                  image: row.image,
+                  // Use local assets instead of Google Sheets image URLs
+                  image: productImageMap[row.id],
                   description: row.description,
                   inStock: row.inStock?.toLowerCase() === 'true' || row.inStock === '1',
                   weight: row.weight || undefined,
