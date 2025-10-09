@@ -12,7 +12,7 @@ interface SEOProps {
 const SEO = ({ 
   title, 
   description, 
-  keywords = "luxury dates, gourmet dates, Arabian dates, date gifts, Ramadan gifts, Diwali gifts, premium chocolates, corporate gifts",
+  keywords = "luxury dates, dates, Arabian dates, date gifts, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom,Ramadan gifts",
   image = "@/assets/logo.png",
   url = "https://milandates.com",
   type = "website"

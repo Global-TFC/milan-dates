@@ -104,15 +104,15 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
                     {formatPrice(currentOriginalPrice, currentLanguage)}
                   </span>
                 )}
-                {product.weight && (
+                 {product.weight && (
                   <span className="text-sm text-muted-foreground">({isArabic ? (product.sizes?.find(s => s.label === selectedSize)?.label_ar || product.weight) : product.weight})</span>
                 )}
               </div>
 
-              <p className="text-muted-foreground mb-2">{isArabic ? product.description_ar : product.description}</p>
+              <p className="text-muted-foreground mb-2 md:mb-5">{isArabic ? product.description_ar : product.description}</p>
 
-              {/* Size Selection */}
-              {product.sizes && product.sizes.length > 0 && (
+             {/* Size Selection */}
+              {/* {product.sizes && product.sizes.length > 0 && (
                 <div className="mb-3">
                   <label className="text-sm font-medium mb-2 block">{t('common.size')}</label>
                   <Select value={selectedSize} onValueChange={setSelectedSize}>
@@ -131,7 +131,7 @@ const ProductQuickView: React.FC<ProductQuickViewProps> = ({ product, open, onCl
                     </SelectContent>
                   </Select>
                 </div>
-              )}
+              )} */}
 
               {/* Quantity Selector */}
               <div className="flex flex-col items-center">
