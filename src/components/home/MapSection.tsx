@@ -19,7 +19,7 @@ const MapSection = () => {
   ];
   
   return (
-    <section className="py-16 bg-background">
+    <section className="py-8 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">{t('sections.map.title')}</h2>

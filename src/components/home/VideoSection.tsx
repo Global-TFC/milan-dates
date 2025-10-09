@@ -13,7 +13,7 @@ const VideoSection = () => {
 
   return (
     <>
-      <section className="py-16 bg-background">
+      <section className="py-5 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
@@ -26,7 +26,7 @@ const VideoSection = () => {
                 {t('sections.video.description')}
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y- mb-8">
                 <div className="flex items-start space-x-3">
                   <span className="text-accent text-xl">✦</span>
                   <div>

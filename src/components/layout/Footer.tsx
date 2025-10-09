@@ -17,7 +17,7 @@ const Footer = () => {
   
   return (
     <footer id="footer" className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
@@ -35,9 +35,6 @@ const Footer = () => {
               </a>
               <a href="#" className="hover:text-accent-gold transition-colors">
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="hover:text-accent-gold transition-colors">
-                <Twitter className="h-5 w-5" />
               </a>
               <a href="#" className="hover:text-accent-gold transition-colors">
                 <Youtube className="h-5 w-5" />
