@@ -40,11 +40,11 @@ const Index = () => {
       />
       <HeroBanner />
       {loading && <>
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8 animate-pulse">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-2 animate-pulse">
 
-          <div className="h-8 w-64 bg-gray-300 rounded mb-4"></div>
+          <div className="h-8 w-64 bg-gray-300 rounded mb-2"></div>
 
-          <div className="h-4 w-96 bg-gray-200 rounded mb-8"></div>
+          <div className="h-4 w-96 bg-gray-200 rounded mb-4"></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
             <div className="bg-white shadow-sm rounded-2xl p-6 flex flex-col items-center text-center">
               <div className="w-12 h-12 bg-gray-300 rounded-full mb-4"></div>

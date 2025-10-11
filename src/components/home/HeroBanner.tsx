@@ -57,7 +57,7 @@ const HeroBanner = () => {
   }, [api, isArabic]);
 
   return (
-    <section className="relative h-[58vh] lg:h-[80vh] overflow-hidden">
+    <section className="relative h-[48vh] lg:h-[70vh] overflow-hidden">
       <Carousel
         className="h-full"
         opts={{ loop: true, direction: isArabic ? "rtl" : "ltr" }}
