@@ -32,7 +32,6 @@ const Shop = () => {
   const { category, collection } = useParams();
   const [sortBy, setSortBy] = useState('featured');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 50000]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,33 +59,9 @@ const Shop = () => {
     loadProducts();
   }, []);
 
-  // Get unique categories
-  const categories = useMemo(() => {
-    const cats = new Set(products.map(p => p.category));
-    return Array.from(cats);
-  }, [products]);
-
-  // Filter products based on route and filters
+  // Filter products to only show dates (this is now redundant as data layer already filters)
   const filteredProducts = useMemo(() => {
-    let filtered = products;
-
-    // Route-based filtering
-    if (collection === 'ramadan') {
-      filtered = products.filter(p => p.category === 'Gift Hampers' || p.badge === 'Limited Edition');
-    } else if (category) {
-      const categoryMap: Record<string, string> = {
-        'dates': 'Dates',
-        'chocolates': 'Chocolates',
-        'honey': 'Honey',
-        'hampers': 'Gift Hampers',
-      };
-      filtered = products.filter(p => p.category === categoryMap[category]);
-    }
-
-    // Category filter
-    if (selectedCategories.length > 0) {
-      filtered = filtered.filter(p => selectedCategories.includes(p.category));
-    }
+    let filtered = products.filter(p => p.category === "Dates");
 
     // Price filter
     filtered = filtered.filter(p => {
@@ -121,21 +96,12 @@ const Shop = () => {
     }
 
     return filtered;
-  }, [products, category, collection, selectedCategories, priceRange, sortBy, isArabic]);
+  }, [products, priceRange, sortBy, isArabic]);
 
-  const pageTitle = collection === 'ramadan' 
-    ? isArabic ? 'تشكيلة رمضان' : 'Ramadan Collection'
-    : category 
-    ? isArabic ? (category.charAt(0).toUpperCase() + category.slice(1)) : (category.charAt(0).toUpperCase() + category.slice(1))
-    : isArabic ? 'جميع المنتجات' : 'All Products';
+  const pageTitle = isArabic ? 'جميع المنتجات' : 'All Products';
+  const pageDescription = isArabic ? 'تسوق مجموعتنا الكاملة من التمور الفاخرة.' : 'Shop our complete collection of luxury gourmet dates.';
 
-  const pageDescription = collection === 'ramadan'
-    ? isArabic ? 'تشكيلة رمضان الحصرية التي تحتوي على تمور فاخرة وسلال هدايا وحلويات فنية مثالية لوجبات الإفطار وعيد الفطر.' : 'Exclusive Ramadan collection featuring premium dates, gift hampers, and artisanal treats perfect for Iftar and Eid celebrations.'
-    : category
-    ? isArabic ? `تصفح مجموعة ${category} الفاخرة لدينا. منتجات فاخرة مختارة يدوياً للهدايا والاستمتاع الشخصي.` : `Browse our selection of premium ${category}. Hand-selected luxury products for gifting and personal indulgence.`
-    : isArabic ? 'تسوق مجموعتنا الكاملة من التمور الفاخرة والشوكولاتة الفنية والعسل الفاخر وسلال الهدايا الأنيقة.' : 'Shop our complete collection of luxury gourmet dates, artisanal chocolates, premium honey, and elegant gift hampers.';
-
-  // Filter component to be used in both desktop sidebar and mobile drawer
+  // Filter component without category filtering
   const FilterComponent = () => (
     <div className="bg-card rounded-lg p-6 shadow-soft">
       <div className="flex items-center space-x-2 mb-4">
@@ -144,31 +110,6 @@ const Shop = () => {
       </div>
 
       <Separator className="mb-6" />
-
-      {/* Categories */}
-      <div className="mb-6">
-        <h4 className="font-medium mb-3">{isArabic ? 'الفئات' : 'Categories'}</h4>
-        <div className="space-y-2">
-          {categories.map((cat) => (
-            <div key={cat} className="flex items-center space-x-2">
-              <Checkbox
-                id={cat}
-                checked={selectedCategories.includes(cat)}
-                onCheckedChange={(checked) => {
-                  if (checked) {
-                    setSelectedCategories([...selectedCategories, cat]);
-                  } else {
-                    setSelectedCategories(selectedCategories.filter(c => c !== cat));
-                  }
-                }}
-              />
-              <Label htmlFor={cat} className="text-sm cursor-pointer">
-                {cat}
-              </Label>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Price Range */}
       <div className="mb-6">
@@ -214,7 +155,6 @@ const Shop = () => {
         variant="outline"
         className="w-full"
         onClick={() => {
-          setSelectedCategories([]);
           setPriceRange([0, 50000]);
         }}
       >
@@ -252,7 +192,7 @@ const Shop = () => {
       <SEO 
         title={pageTitle}
         description={pageDescription}
-        keywords={`${pageTitle}, luxury dates, premium ${category || 'products'}, gourmet gifts, Milan Dates, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom, Ramadan gifts`}
+        keywords={`${pageTitle}, luxury dates, premium dates, gourmet gifts, Milan Dates, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom, Ramadan gifts`}
       />
       <div className="container mx-auto px-4">
         {/* Page Header */}
@@ -285,7 +225,7 @@ const Shop = () => {
                   <DrawerContent>
                     <DrawerHeader>
                       <DrawerTitle>{isArabic ? 'الفلاتر' : 'Filters'}</DrawerTitle>
-                      <DrawerDescription>{isArabic ? 'قم بتصفية المنتجات حسب الفئة أو السعر' : 'Filter products by category or price'}</DrawerDescription>
+                      <DrawerDescription>{isArabic ? 'قم بتصفية المنتجات حسب السعر' : 'Filter products by price'}</DrawerDescription>
                     </DrawerHeader>
                     <div className="px-4">
                       <FilterComponent />

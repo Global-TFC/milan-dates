@@ -14,19 +14,13 @@ const PrivacyPolicy = () => {
         keywords={isArabic ? "سياسة الخصوصية، ميلان للتمور، حماية البيانات، خصوصية العملاء، واتساب، بيانات شخصية" : "privacy policy, Milan Dates, data protection, customer privacy, WhatsApp, personal data"}
       />
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/src/assets/hero-dates.jpg')` 
-          }}
-          role="img"
-          aria-label={isArabic ? "سياسة الخصوصية - ميلان للتمور" : "Privacy Policy - Milan Dates"}
-        />
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${isArabic ? 'font-arabic' : ''}`}>
-            {isArabic ? "سياسة الخصوصية" : "Privacy Policy"}
-          </h1>
+      <section className="relative py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${isArabic ? 'font-arabic' : ''}`}>
+              {isArabic ? "سياسة الخصوصية" : "Privacy Policy"}
+            </h1>
+          </div>
         </div>
       </section>
 

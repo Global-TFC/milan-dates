@@ -19,10 +19,10 @@ const RamadanCollection = ({ products }: RamadanCollectionProps) => {
   const currentPrice = isArabic ? 900 : 19999;
   const currentOriginalPrice = isArabic ? 1200 : 24999;
 
-  // Use passed products or default collection
+  // Use passed products or default collection - only show dates products
   const ramadanProducts = products
     ? products.filter(
-        (p) => p.category === "Gift Hampers" || p.badge === "Limited Edition"
+        (p) => p.category === "Dates"
       )
     : defaultRamadanCollection;
 
@@ -74,21 +74,15 @@ const RamadanCollection = ({ products }: RamadanCollectionProps) => {
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="text-accent-gold">✓</span>
-                  <span>{t("sections.ramadan.hamper.items.chocolate")}</span>
+                  <span>Premium Quality Dates</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="text-accent-gold">✓</span>
-                  <span>{t("sections.ramadan.hamper.items.dryFruits")}</span>
+                  <span>Luxury Packaging</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <span className="text-accent-gold">✓</span>
-                  <span>{t("sections.ramadan.hamper.items.mithai")}</span>
-                </li>
-                <li className="flex items-center space-x-2">
-                  <span className="text-accent-gold">✓</span>
-                  <span>
-                    {t("sections.ramadan.hamper.items.dateSelection")}
-                  </span>
+                  <span>Perfect for Gifting</span>
                 </li>
               </ul>
 
@@ -115,7 +109,7 @@ const RamadanCollection = ({ products }: RamadanCollectionProps) => {
                 className="bg-white text-luxury-brown hover:bg-white/90"
                 asChild
               >
-                <Link to="/collections/ramadan">
+                <Link to="/shop">
                   {t("sections.ramadan.hamper.shopNow")}
                 </Link>
               </Button>
@@ -124,7 +118,7 @@ const RamadanCollection = ({ products }: RamadanCollectionProps) => {
             <div className="relative">
               <img
                 src={ramadanProducts[0]?.image}
-                alt="Ramadan Hamper"
+                alt="Ramadan Dates Collection"
                 className="rounded-lg shadow-2xl"
               />
               <div className="absolute -top-4 -right-4 bg-accent-gold text-luxury-dark px-3 py-1 rounded-full font-semibold text-sm">

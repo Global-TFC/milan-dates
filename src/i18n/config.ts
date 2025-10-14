@@ -15,7 +15,7 @@ i18n
       en: {
         translation: {
           common: {
-            brandName: 'MilanDates',
+            brandName: 'Milan Dates',
             addToCart: 'Add to Cart',
             viewCart: 'View Cart',
             quantity: 'Quantity',
@@ -36,21 +36,17 @@ i18n
             },
             featured: {
               title: 'Featured Products',
-              description: 'Handpicked selections of our finest gourmet dates, chocolates, and luxury gift hampers'
+              description: 'Handpicked selections of our finest gourmet dates'
             },
             ramadan: {
               limitedOffer: 'Limited Time Offer',
               title: 'Ramadan Celebration Collection',
-              description: 'Make this Ramadan extra special with our exclusive festive hampers. Each gift is thoughtfully curated with premium ingredients and presented in elegant packaging.',
+              description: 'Make this Ramadan extra special with our exclusive dates collection. Each gift is thoughtfully curated with premium ingredients and presented in elegant packaging.',
               hamper: {
                 title: 'Royal Ramadan Gift Box',
                 exclusive: 'Exclusive Hamper',
                 items: {
                   dates: 'Premium Medjool Dates (500g)',
-                  chocolate: 'Belgian Chocolate Collection',
-                  dryFruits: 'Assorted Dry Fruits & Nuts',
-                  mithai: 'Traditional Mithai Selection',
-                  dateSelection: 'Traditional Date Selection'
                 },
                 limitedStock: 'Limited Stock',
                 shopNow: 'Shop Now',
@@ -59,7 +55,7 @@ i18n
             },
             video: {
               title: 'The Art of Creating Perfect Gift Boxes',
-              description: 'Watch our master craftsmen carefully select and arrange each premium date, chocolate, and delicacy into our signature gift boxes. Every MilanDates creation is a work of art, designed to deliver moments of pure luxury.',
+              description: 'Watch our master craftsmen carefully select and arrange each premium date into our signature gift boxes. Every MilanDates creation is a work of art, designed to deliver moments of pure luxury.',
               features: {
                 selection: {
                   title: 'Handpicked Selection',
@@ -91,14 +87,6 @@ i18n
             menu: {
               allProducts: 'All Products',
               dates: 'Dates',
-              chocolates: 'Chocolates',
-              honey: 'Honey',
-              giftHampers: 'Gift Hampers',
-              festiveCollections: 'Festive Collections',
-              ramadanSpecial: 'Ramadan Special',
-              weddingGifts: 'Wedding Gifts',
-              corporateGifts: 'Corporate Gifts',
-              worldOf: 'World of MilanDates',
             },
           },
           cart: {
@@ -170,21 +158,17 @@ i18n
             },
             featured: {
               title: 'منتجات مميزة',
-              description: 'مجموعة مختارة من أجود التمور والشوكولاتة وسلال الهدايا الفاخرة'
+              description: 'مجموعة مختارة من أجود التمور'
             },
             ramadan: {
               limitedOffer: 'عرض لفترة محدودة',
               title: 'تشكيلة رمضان',
-              description: 'اجعل رمضان هذا العام أكثر تميزاً مع سلال هدايانا الحصرية. كل هدية تم تنسيقها بعناية مع مكونات فاخرة وتقدم في عبوات أنيقة.',
+              description: 'اجعل رمضان هذا العام أكثر تميزاً مع تشكيلتنا الحصرية من التمور. كل هدية تم تنسيقها بعناية مع مكونات فاخرة وتقدم في عبوات أنيقة.',
               hamper: {
                 title: 'صندوق هدايا رمضان الملكي',
                 exclusive: 'سلة حصرية',
                 items: {
                   dates: 'تمور مجدول فاخرة (500 جرام)',
-                  chocolate: 'تشكيلة الشوكولاتة البلجيكية',
-                  dryFruits: 'تشكيلة مكسرات وفواكه مجففة',
-                  mithai: 'تشكيلة حلويات تقليدية',
-                  dateSelection: 'تشكيلة تمور تقليدية'
                 },
                 limitedStock: 'كمية محدودة',
                 shopNow: 'تسوق الآن',
@@ -193,7 +177,7 @@ i18n
             },
             video: {
               title: 'فن صنع صناديق الهدايا المثالية',
-              description: 'شاهد حرفيينا المهرة وهم يختارون ويجهزون كل تمر فاخر وشوكولاتة وأطباق خاصة بعناية في صناديق الهدايا المميزة لدينا. كل منتج من منتجات ميلان للتمور هو تحفة فنية، مصممة لتقديم لحظات من الفخامة纯粹.',
+              description: 'شاهد حرفيينا المهرة وهم يختارون ويجهزون كل تمر فاخر بعناية في صناديق الهدايا المميزة لدينا. كل منتج من منتجات ميلان للتمور هو تحفة فنية، مصممة لتقديم لحظات من الفخامة纯粹.',
               features: {
                 selection: {
                   title: 'اختيار يدوي',
@@ -225,14 +209,6 @@ i18n
             menu: {
               allProducts: 'جميع المنتجات',
               dates: 'تمور',
-              chocolates: 'شوكولاتة',
-              honey: 'عسل',
-              giftHampers: 'سلال هدايا',
-              festiveCollections: 'تشكيلات المناسبات',
-              ramadanSpecial: 'تشكيلة رمضان',
-              weddingGifts: 'هدايا الزفاف',
-              corporateGifts: 'هدايا الشركات',
-              worldOf: 'عالم ميلان للتمور',
             },
           },
           cart: {

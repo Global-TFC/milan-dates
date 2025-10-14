@@ -22,38 +22,7 @@ const Header = () => {
   const isArabic = i18n.language === 'ar';
   const currentLanguage = i18n.language;
 
-  const navigationItems = [{
-    title: t('nav.shop'),
-    items: [{
-      name: t('nav.menu.allProducts'),
-      href: '/shop'
-    }, {
-      name: t('nav.menu.dates'),
-      href: '/shop/dates'
-    }, {
-      name: t('nav.menu.chocolates'),
-      href: '/shop/chocolates'
-    }, {
-      name: t('nav.menu.honey'),
-      href: '/shop/honey'
-    }, {
-      name: t('nav.menu.giftHampers'),
-      href: '/shop/hampers'
-    }]
-  }, {
-    title: t('nav.menu.festiveCollections'),
-    items: [{
-      name: t('nav.menu.ramadanSpecial'),
-      href: '/collections/ramadan'
-    }, {
-      name: t('nav.menu.weddingGifts'),
-      href: '/collections/wedding'
-    }, {
-      name: t('nav.menu.corporateGifts'),
-      href: '/collections/corporate'
-    }]
-  }];
-  
+  // Removed dropdown navigation items - only keeping simple links
   const handleWhatsAppCheckout = () => {
     // Format cart items for WhatsApp message
     let message = isArabic ? '🛒 *طلب شراء*\n\n' : '🛒 *Order Request*\n\n';
@@ -103,25 +72,14 @@ const Header = () => {
               <h1 className="text-2xl font-bold text-primary">{t('common.brandName')}</h1>
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Simplified without dropdowns */}
             <NavigationMenu className="hidden lg:block">
               <NavigationMenuList>
-                {navigationItems.map(item => <NavigationMenuItem key={item.title}>
-                    <NavigationMenuTrigger className="bg-transparent">
-                      {item.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                        {item.items.map(subItem => <li key={subItem.name}>
-                            <NavigationMenuLink asChild>
-                              <Link to={subItem.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
-                                <div className="text-sm font-medium leading-none">{subItem.name}</div>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>)}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>)}
+                <NavigationMenuItem>
+                  <Link to="/shop" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
+                    {t('nav.shop')}
+                  </Link>
+                </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link to="/our-story" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none">
                     {t('footer.links.about')}
@@ -156,22 +114,12 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Simplified without dropdowns */}
         {mobileMenuOpen && <div className="lg:hidden bg-background border-t border-border">
             <div className="container mx-auto px-4 py-4">
-              {navigationItems.map(item => <div key={item.title} className="mb-4">
-                  <h3 className="font-semibold mb-2 flex items-center">
-                    {item.title}
-                    <ChevronDown className="ml-1 h-4 w-4" />
-                  </h3>
-                  <ul className="ml-4 space-y-2">
-                    {item.items.map(subItem => <li key={subItem.name}>
-                        <Link to={subItem.href} className="text-muted-foreground hover:text-foreground" onClick={() => setMobileMenuOpen(false)}>
-                          {subItem.name}
-                        </Link>
-                      </li>)}
-                  </ul>
-                </div>)}
+              <Link to="/shop" className="text-muted-foreground hover:text-foreground block mb-2" onClick={() => setMobileMenuOpen(false)}>
+                {t('nav.shop')}
+              </Link>
               <Link to="/our-story" className="text-muted-foreground hover:text-foreground block mb-2" onClick={() => setMobileMenuOpen(false)}>
                 {t('footer.links.about')}
               </Link>
