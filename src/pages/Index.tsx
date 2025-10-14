@@ -34,7 +34,7 @@ const Index = () => {
   return (
     <>
       <SEO
-        title={isArabic ? "تمور فاخرة وهدايا فاخرة" : "Luxury Gourmet Dates & Premium Gifts"}
+        title={isArabic ? "تمور فاخرة وهدايا فاخرة" : "Luxury Dates with Milan Dates"}
         description={isArabic ? "اكتشف أجود التمور الفاخرة والشوكولاتة الفنية وسلال الهدايا الفاخرة. مثالية للاحتفالات والهدايا المؤسسية." : "Discover the world's finest gourmet dates, artisanal chocolates, and luxury gift hampers. Perfect for Diwali celebrations and corporate gifting."}
         keywords={isArabic ? "تمور فاخرة، تمور فاخرة، تمور عربية، هدايا رمضان، هدايا ديوالي، شوكولاتة فاخرة، هدايا مؤسسية، سلال هدايا" : "luxury dates, gourmet dates, Arabian dates, Ramadan gifts, Diwali gifts, premium chocolates, corporate gifts, gift hampers"}
       />

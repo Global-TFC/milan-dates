@@ -6,6 +6,7 @@ import {
   Dialog,
   DialogContent,
 } from '@/components/ui/dialog';
+import theArtOfImage from '@/assets/theartof.png';
 
 const VideoSection = () => {
   const [videoOpen, setVideoOpen] = useState(false);
@@ -68,19 +69,14 @@ const VideoSection = () => {
               </Button>
             </div>
 
-            {/* Video Thumbnail */}
-            <div className="relative group cursor-pointer" onClick={() => setVideoOpen(true)}>
-              <div className="aspect-video rounded-lg overflow-hidden shadow-luxury">
+            {/* Image Replacement */}
+            <div className="relative">
+              <div className="rounded-lg overflow-hidden shadow-luxury mx-auto" style={{ maxWidth: '80%' }}>
                 <img
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800"
-                  alt="Gift box creation process"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src={theArtOfImage}
+                  alt="The Art of Creating Perfect Gift Boxes"
+                  className="w-full h-full object-contain"
                 />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
-                  <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="h-8 w-8 text-luxury-brown ml-1" />
-                  </div>
-                </div>
               </div>
               
               <div className="absolute -bottom-4 -right-4 bg-accent text-accent-foreground px-4 py-2 rounded-lg font-medium shadow-lg">
@@ -91,11 +87,15 @@ const VideoSection = () => {
         </div>
       </section>
 
-      {/* Video Dialog */}
+      {/* Image Dialog */}
       <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
         <DialogContent className="max-w-4xl p-0">
-          <div className="aspect-video bg-black rounded-lg flex items-center justify-center">
-            <p className="text-white">Video player would be embedded here</p>
+          <div className="aspect-video bg-background rounded-lg flex items-center justify-center">
+            <img
+              src={theArtOfImage}
+              alt="The Art of Creating Perfect Gift Boxes"
+              className="w-full h-full object-contain p-4"
+            />
           </div>
         </DialogContent>
       </Dialog>

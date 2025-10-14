@@ -13,6 +13,7 @@ import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import OurStory from "./pages/OurStory";
 import Craftsmanship from "./pages/Craftsmanship";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 import { useEffect, useState } from "react";
 
@@ -43,6 +44,7 @@ const MainContent = () => {
         <Route path="/collections/:collection" element={<Shop />} />
         <Route path="/our-story" element={<OurStory />} />
         <Route path="/craftsmanship" element={<Craftsmanship />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react';
 const WhatsAppFloatingButton = () => {
   const handleWhatsAppClick = () => {
     // Replace with your business WhatsApp number (without + or spaces)
-    const whatsappNumber = '919999999999'; // Example: 919999999999 for India
+    const whatsappNumber = '916235777836'; // WhatsApp number for Regal Gifts Boutique
     const message = 'Hello! I would like to inquire about your products.';
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;

@@ -252,7 +252,7 @@ const Shop = () => {
       <SEO 
         title={pageTitle}
         description={pageDescription}
-        keywords={`${pageTitle}, luxury dates, premium ${category || 'products'}, gourmet gifts`}
+        keywords={`${pageTitle}, luxury dates, premium ${category || 'products'}, gourmet gifts, Milan Dates, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom, Ramadan gifts`}
       />
       <div className="container mx-auto px-4">
         {/* Page Header */}

@@ -48,7 +48,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/about"
+                  to="/our-story"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
                   {t('footer.links.about')}
@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/corporate"
+                  to="/craftsmanship"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
                   {t('footer.links.corporate')}
@@ -87,7 +87,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  to="/shipping"
+                  to="/our-story"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
                   {t('footer.links.shipping')}
@@ -95,7 +95,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/returns"
+                  to="/our-story"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
                   {t('footer.links.returns')}
@@ -103,7 +103,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/terms"
+                  to="/privacy"
                   className="opacity-90 hover:opacity-100 hover:text-accent-gold transition-all"
                 >
                   {t('footer.links.terms')}
@@ -148,7 +148,7 @@ const Footer = () => {
               </li>
               <li className={`flex items-center ${isArabic ? 'space-x-reverse' : 'space-x-2'}`}>
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="opacity-90">info@milandates.in</span>
+                <span className="opacity-90">{t('footer.email')}</span>
               </li>
             </ul>
           </div>

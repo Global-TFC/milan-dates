@@ -12,12 +12,12 @@ interface SEOProps {
 const SEO = ({ 
   title, 
   description, 
-  keywords = "luxury dates, dates, Arabian dates, date gifts, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom,Ramadan gifts",
+  keywords = "Milan Dates, milan dates, milandates, luxury dates, dates, Arabian dates, date gifts, Ajwa Dates, Medjool Dates, Segai Dates, Mabroom,Ramadan gifts",
   image = "@/assets/logo.png",
   url = "https://milandates.com",
   type = "website"
 }: SEOProps) => {
-  const fullTitle = `${title} | MilanDates`;
+  const fullTitle = `${title} | Milan Dates`;
   
   return (
     <Helmet>
@@ -33,7 +33,7 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-      <meta property="og:site_name" content="MilanDates" />
+      <meta property="og:site_name" content="Milan Dates" />
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@ const SEO = ({
       
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
-      <meta name="author" content="MilanDates" />
+      <meta name="author" content="Milan Dates" />
     </Helmet>
   );
 };

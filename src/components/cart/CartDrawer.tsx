@@ -41,7 +41,7 @@ const CartDrawer = () => {
     message += isArabic ? 'يرجى تأكيد التوفر وتفاصيل التسليم.' : 'Please confirm availability and delivery details.';
     
     // Replace with your business WhatsApp number (without + or spaces)
-    const whatsappNumber = '919999999999'; // Example: 919999999999 for India
+    const whatsappNumber = '916235777836'; // WhatsApp number for Regal Gifts Boutique
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     
